@@ -5,18 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mở Khóa Kho Dụng Cụ Hoàng Gia - Online & Offline (KHTN 8)</title>
   
-  <!-- Font chữ tiếng Việt hỗ trợ đầy đủ dấu, độ tương phản cao -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
   
-  <!-- Thư viện PeerJS (WebRTC P2P miễn phí - tạo phòng Online trực tiếp trên GitHub Pages không cần server) -->
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
 
   <style>
-    /* ==========================================================================
-       1. BIẾN MÀU SẮC & THIẾT LẬP CHUNG (CỔ TRANG VIỆT NAM - ĐỎ SON & VÀNG KIM)
-       ========================================================================== */
     :root {
       --crimson-dark: #4a070b;
       --crimson-main: #8b1118;
@@ -55,9 +50,6 @@
       justify-content: center;
     }
 
-    /* ==========================================================================
-       2. KHUNG SÂN KHẤU MÁY CHIẾU 16:9 (CHO HOST / SOLO)
-       ========================================================================== */
     #stage-wrapper {
       width: 100vw;
       height: 100vh;
@@ -100,9 +92,6 @@
     .corner-bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
     .corner-br { bottom: 10px; right: 10px; transform: scale(-1, -1); }
 
-    /* ==========================================================================
-       3. THANH CÔNG CỤ ĐIỀU KHIỂN CHUNG & BẢNG ĐIỂM 4 ĐỘI
-       ========================================================================== */
     #top-hud {
       position: absolute;
       top: 18px;
@@ -192,9 +181,6 @@
       text-align: center;
     }
 
-    /* ==========================================================================
-       4. HỆ THỐNG CÁC MÀN HÌNH ĐỘC LẬP (<section class="screen">)
-       ========================================================================== */
     .screen {
       position: absolute;
       inset: 0;
@@ -260,9 +246,6 @@
       position: relative;
     }
 
-    /* ==========================================================================
-       MÀN 1: MÀN CHÀO & CHỌN CHẾ ĐỘ CHƠI (#screen-welcome)
-       ========================================================================== */
     #screen-welcome { padding-top: 72px; }
 
     .welcome-badge {
@@ -368,9 +351,6 @@
       justify-content: center;
     }
 
-    /* ==========================================================================
-       MÀN 2A: PHÒNG CHỜ ONLINE CỦA GIÁO VIÊN (#screen-host-lobby)
-       ========================================================================== */
     .section-heading {
       font-family: 'Playfair Display', serif;
       font-size: 46px;
@@ -483,9 +463,6 @@
       padding: 8px 10px;
     }
 
-    /* ==========================================================================
-       MÀN 3: MÀN CỬA KHO BÁU & 4 Ổ KHÓA (#screen-vault)
-       ========================================================================== */
     .vault-container {
       width: 100%;
       max-width: 1440px;
@@ -599,9 +576,6 @@
       border-radius: 14px;
     }
 
-    /* ==========================================================================
-       MÀN 4: MÀN CÂU HỎI & TRẠNG THÁI TRẢ LỜI ONLINE (#screen-question)
-       ========================================================================== */
     .question-topbar {
       width: 100%;
       max-width: 1440px;
@@ -730,7 +704,6 @@
       color: #291108;
     }
 
-    /* Thanh báo trạng thái đội nào đã gửi đáp án trên điện thoại */
     .live-submissions-bar {
       display: flex;
       gap: 18px;
@@ -751,9 +724,6 @@
       color: #86efac;
     }
 
-    /* ==========================================================================
-       MÀN 5: MÀN PHẢN HỒI, GIẢI THÍCH & CỘNG ĐIỂM (#screen-feedback)
-       ========================================================================== */
     .feedback-layout {
       width: 100%;
       max-width: 1440px;
@@ -839,9 +809,6 @@
       text-align: center;
     }
 
-    /* ==========================================================================
-       MÀN 6 & 7: CHIẾN THẮNG & CHUYỂN GIAO NHIỆM VỤ
-       ========================================================================== */
     .victory-title {
       font-family: 'Playfair Display', serif;
       font-size: 44px;
@@ -948,8 +915,7 @@
     }
 
     /* ==========================================================================
-       5. GIAO DIỆN ĐIỆN THOẠI CHO HỌC SINH (#player-mobile-app)
-       Tự động bung toàn màn hình điện thoại (không bị thu nhỏ 16:9)
+       GIAO DIỆN ĐIỆN THOẠI HỌC SINH (TỐI ƯU KÍCH THƯỚC, HIỂN THỊ KHO VẬT PHẨM RIÊNG)
        ========================================================================== */
     #player-mobile-app {
       display: none;
@@ -959,7 +925,7 @@
       background: radial-gradient(circle at top, #8b1118 0%, #3b0508 100%);
       color: #fffbeb;
       flex-direction: column;
-      padding: 20px;
+      padding: 16px;
       overflow-y: auto;
     }
     #player-mobile-app.active { display: flex; }
@@ -968,35 +934,38 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       border: 2px solid var(--gold-main);
-      border-radius: 14px;
-      padding: 10px 16px;
-      margin-bottom: 20px;
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
       font-weight: 800;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .mobile-card {
       background: linear-gradient(180deg, #fffbeb 0%, #f5deb3 100%);
       color: #291108;
       border: 4px solid var(--gold-main);
-      border-radius: 22px;
-      padding: 24px 20px;
+      border-radius: 20px;
+      padding: 20px 16px;
       text-align: center;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
       margin: auto 0;
+      width: 100%;
+      max-width: 480px;
+      align-self: center;
     }
 
     .mobile-input {
       width: 100%;
-      padding: 14px;
-      font-size: 22px;
+      padding: 12px;
+      font-size: 20px;
       font-weight: 900;
       text-align: center;
       border: 3px solid #b45309;
-      border-radius: 14px;
-      margin-bottom: 16px;
+      border-radius: 12px;
+      margin-bottom: 14px;
       background: #ffffff;
       color: #291108;
     }
@@ -1004,14 +973,14 @@
     .team-select-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 18px;
+      gap: 10px;
+      margin-bottom: 14px;
     }
     .team-pick-btn {
-      padding: 14px;
-      font-size: 20px;
+      padding: 12px;
+      font-size: 18px;
       font-weight: 900;
-      border-radius: 14px;
+      border-radius: 12px;
       border: 3px solid #b45309;
       background: #ffffff;
       color: #291108;
@@ -1023,24 +992,47 @@
       border-color: #fde047;
     }
 
+    /* Kho vật phẩm cá nhân/đội hiển thị trên điện thoại học sinh */
+    .mobile-vault-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .mob-vault-item {
+      background: rgba(40, 10, 10, 0.9);
+      border: 2px dashed #b45309;
+      border-radius: 12px;
+      padding: 12px 8px;
+      text-align: center;
+      font-size: 13px;
+      color: #fde68a;
+      font-weight: 700;
+    }
+    .mob-vault-item.unlocked {
+      background: #14532d;
+      border: 2px solid #4ade80;
+      color: #86efac;
+    }
+
     .mobile-options-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      margin-top: 16px;
+      gap: 12px;
+      margin-top: 14px;
     }
     .mobile-opt-btn {
       background: #fffbeb;
       border: 3px solid #b45309;
-      border-radius: 16px;
-      padding: 16px;
-      font-size: 20px;
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 18px;
       font-weight: 800;
       color: #291108;
       text-align: left;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       cursor: pointer;
     }
     .mobile-opt-btn.chosen {
@@ -1048,7 +1040,7 @@
       color: #ffffff;
       border-color: #93c5fd;
     }
-    .mobile-opt-btn:disabled { opacity: 0.75; }
+    .mobile-opt-btn:disabled { opacity: 0.8; cursor: not-allowed; }
   </style>
 </head>
 <body>
@@ -1059,7 +1051,6 @@
 <div id="stage-wrapper">
   <div id="game-stage">
 
-    <!-- Hoa văn trống đồng nền chìm -->
     <svg class="bg-pattern" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
       <defs>
         <pattern id="dongson-grid" width="200" height="200" patternUnits="userSpaceOnUse">
@@ -1071,7 +1062,6 @@
       <rect width="1600" height="900" fill="url(#dongson-grid)"/>
     </svg>
 
-    <!-- 4 góc hoa văn cung đình -->
     <svg class="corner-ornament corner-tl" viewBox="0 0 100 100">
       <path d="M5,95 L5,25 Q5,5 25,5 L95,5 M18,80 L18,30 Q18,18 30,18 L80,18" fill="none" stroke="#fde047" stroke-width="4"/>
       <circle cx="30" cy="30" r="7" fill="#eab308"/>
@@ -1091,7 +1081,6 @@
 
     <canvas id="confetti-canvas"></canvas>
 
-    <!-- THANH ĐIỀU KHIỂN CHUNG (HUD) -->
     <header id="top-hud">
       <div class="hud-group">
         <button class="hud-btn" id="btn-back" onclick="goBack()">⬅ Quay lại</button>
@@ -1124,15 +1113,12 @@
       </div>
     </header>
 
-    <!-- ======================================================================
-         MÀN 1: MÀN CHÀO & CHỌN HÌNH THỨC CHƠI (#screen-welcome)
-         ====================================================================== -->
+    <!-- MÀN 1: MÀN CHÀO & CHỌN HÌNH THỨC CHƠI -->
     <section class="screen active" id="screen-welcome">
       <div class="welcome-badge">✦ CHỦ ĐỀ: BÍ ẨN HAI VIÊN HẠT HOÀNG GIA ✦</div>
       <h1 class="welcome-title">MỞ KHÓA KHO DỤNG CỤ HOÀNG GIA</h1>
 
       <div class="welcome-grid">
-        <!-- Minh họa Nhà Vua Việt Nam cổ trang -->
         <div class="king-illustration-box">
           <svg viewBox="0 0 320 330" width="300" height="300">
             <path d="M20,115 Q160,55 300,115 L285,130 Q160,78 35,130 Z" fill="#b91c1c" stroke="#fde047" stroke-width="3"/>
@@ -1184,7 +1170,6 @@
         </div>
       </div>
 
-      <!-- 3 nút chọn vai trò rõ ràng -->
       <div class="mode-buttons-row">
         <button class="royal-cta-btn green-btn" onclick="startOnlineHost()">
           🌐 GIÁO VIÊN: TẠO PHÒNG ONLINE
@@ -1198,14 +1183,11 @@
       </div>
     </section>
 
-    <!-- ======================================================================
-         MÀN 2: PHÒNG CHỜ ONLINE / DANH SÁCH 4 ĐỘI (#screen-teams)
-         ====================================================================== -->
+    <!-- MÀN 2: PHÒNG CHỜ ONLINE -->
     <section class="screen" id="screen-teams">
       <h2 class="section-heading" id="teams-screen-heading">PHÒNG CHỜ BIỆT ĐỘI KHOA HỌC NHÍ</h2>
       <p class="section-subheading" id="teams-screen-sub">Giáo viên có thể đổi tên 4 đội hoặc chờ các đội kết nối qua mã phòng</p>
 
-      <!-- Khung hiển thị mã PIN 4 số khi chơi Online -->
       <div class="lobby-pin-banner" id="online-pin-banner">
         <div>
           <div style="font-size: 18px; color: #fde047; font-weight: 800; margin-bottom: 4px;">MÃ PHÒNG TRỰC TUYẾN:</div>
@@ -1218,7 +1200,6 @@
       </div>
 
       <div class="teams-grid">
-        <!-- Đội A -->
         <div class="team-card" id="team-card-0">
           <div class="team-emblem" style="background: linear-gradient(135deg, #fee2e2, #fca5a5);">
             <svg viewBox="0 0 80 80" width="66" height="66">
@@ -1230,7 +1211,6 @@
           <div class="online-status-pill" id="team-status-0">Chưa kết nối</div>
         </div>
 
-        <!-- Đội B -->
         <div class="team-card" id="team-card-1">
           <div class="team-emblem" style="background: linear-gradient(135deg, #dbeafe, #93c5fd);">
             <svg viewBox="0 0 80 80" width="66" height="66">
@@ -1242,7 +1222,6 @@
           <div class="online-status-pill" id="team-status-1">Chưa kết nối</div>
         </div>
 
-        <!-- Đội C -->
         <div class="team-card" id="team-card-2">
           <div class="team-emblem" style="background: linear-gradient(135deg, #dcfce7, #86efac);">
             <svg viewBox="0 0 80 80" width="66" height="66">
@@ -1254,7 +1233,6 @@
           <div class="online-status-pill" id="team-status-2">Chưa kết nối</div>
         </div>
 
-        <!-- Đội D -->
         <div class="team-card" id="team-card-3">
           <div class="team-emblem" style="background: linear-gradient(135deg, #fef3c7, #fcd34d);">
             <svg viewBox="0 0 80 80" width="66" height="66">
@@ -1272,9 +1250,7 @@
       </button>
     </section>
 
-    <!-- ======================================================================
-         MÀN 3: MÀN CỬA KHO BÁU & 4 Ổ KHÓA (#screen-vault)
-         ====================================================================== -->
+    <!-- MÀN 3: CỬA KHO BÁU & 4 Ổ KHÓA -->
     <section class="screen" id="screen-vault">
       <div class="vault-container">
         <div class="vault-door-seam"></div>
@@ -1291,9 +1267,7 @@
       </div>
     </section>
 
-    <!-- ======================================================================
-         MÀN 4: MÀN CÂU HỎI & ĐẾM NGƯỢC 10 GIÂY (#screen-question)
-         ====================================================================== -->
+    <!-- MÀN 4: MÀN CÂU HỎI THẢO LUẬN TRÊN MÁY CHIẾU (KHÔNG HIỆN KHO CHUNG) -->
     <section class="screen" id="screen-question">
       <div class="question-topbar">
         <div class="q-badge-title">
@@ -1311,7 +1285,6 @@
         </div>
       </div>
 
-      <!-- Hiển thị trạng thái đội nào đã gửi đáp án online -->
       <div class="live-submissions-bar" id="live-submissions-bar">
         <div class="sub-pill" id="sub-pill-0">Đội A: Đang suy nghĩ...</div>
         <div class="sub-pill" id="sub-pill-1">Đội B: Đang suy nghĩ...</div>
@@ -1330,9 +1303,7 @@
       </button>
     </section>
 
-    <!-- ======================================================================
-         MÀN 5: MÀN PHẢN HỒI, GIẢI THÍCH & CỘNG ĐIỂM (#screen-feedback)
-         ========================================================================== -->
+    <!-- MÀN 5: PHẢN HỒI VÀ CHẤM ĐIỂM -->
     <section class="screen" id="screen-feedback">
       <div class="feedback-layout">
         <div class="scroll-parchment answer-reveal-card">
@@ -1343,7 +1314,7 @@
 
           <div class="scoring-panel">
             <div class="scoring-title">
-              <span>🏆 ĐIỂM SỐ CÂU NÀY (Tự động chấm đội online hoặc bấm chỉnh tay +10đ)</span>
+              <span>🏆 ĐIỂM SỐ CÂU NÀY (Tự động chấm điểm đội hoặc bấm chỉnh tay +10đ)</span>
               <span style="font-size: 16px; color: #fde68a;">Không trừ điểm đội sai</span>
             </div>
             <div class="team-award-grid" id="fb-award-grid"></div>
@@ -1373,9 +1344,7 @@
       </button>
     </section>
 
-    <!-- ======================================================================
-         MÀN 6: MÀN CHIẾN THẮNG & 4 DỤNG CỤ KHOA HỌC (#screen-victory)
-         ====================================================================== -->
+    <!-- MÀN 6: CHIẾN THẮNG -->
     <section class="screen" id="screen-victory">
       <h2 class="victory-title">
         🎉 CHÚC MỪNG BIỆT ĐỘI KHOA HỌC NHÍ!<br>
@@ -1455,9 +1424,7 @@
       </button>
     </section>
 
-    <!-- ======================================================================
-         MÀN 7: MÀN CHUYỂN GIAO NHIỆM VỤ THẢO LUẬN (#screen-mission)
-         ====================================================================== -->
+    <!-- MÀN 7: CHUYỂN GIAO NHIỆM VỤ -->
     <section class="screen" id="screen-mission">
       <div class="final-standings-bar" id="final-standings-bar"></div>
 
@@ -1482,7 +1449,6 @@
       </button>
     </section>
 
-    <!-- Hộp thông báo hoạt động thảo luận nhóm -->
     <div id="discussion-modal">
       <div class="scroll-parchment modal-card">
         <h2 style="font-size: 36px; color: #991b1b; font-weight: 900; margin-bottom: 16px;">
@@ -1502,7 +1468,7 @@
 </div>
 
 <!-- ==========================================================================
-     PHẦN B: GIAO DIỆN ĐIỆN THOẠI DÀNH RIÊNG CHO HỌC SINH (#player-mobile-app)
+     PHẦN B: GIAO DIỆN ĐIỆN THOẠI HỌC SINH (KHO VẬT PHẨM RIÊNG TỪNG ĐỘI)
      ========================================================================== -->
 <div id="player-mobile-app">
   <div class="mobile-header">
@@ -1512,12 +1478,12 @@
 
   <!-- Bước 1: Nhập mã phòng PIN & Chọn đội -->
   <div class="mobile-card" id="mob-step-join">
-    <h2 style="color: #991b1b; font-size: 26px; font-weight: 900; margin-bottom: 8px;">VÀO PHÒNG HOÀNG GIA</h2>
-    <p style="font-size: 16px; color: #451a03; margin-bottom: 16px; font-weight: 600;">Nhập mã 4 số đang chiếu trên màn hình giáo viên</p>
+    <h2 style="color: #991b1b; font-size: 24px; font-weight: 900; margin-bottom: 6px;">VÀO PHÒNG HOÀNG GIA</h2>
+    <p style="font-size: 15px; color: #451a03; margin-bottom: 14px; font-weight: 600;">Nhập mã 4 số đang chiếu trên màn hình giáo viên</p>
 
     <input type="tel" maxlength="4" class="mobile-input" id="mob-input-pin" placeholder="MÃ PHÒNG (VD: 4829)" />
 
-    <div style="font-size: 16px; font-weight: 800; margin-bottom: 8px; text-align: left;">Chọn đội của bạn:</div>
+    <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px; text-align: left;">Chọn đội của bạn:</div>
     <div class="team-select-grid">
       <button class="team-pick-btn active" onclick="selectMobileTeam(0, this)">Đội A</button>
       <button class="team-pick-btn" onclick="selectMobileTeam(1, this)">Đội B</button>
@@ -1525,42 +1491,54 @@
       <button class="team-pick-btn" onclick="selectMobileTeam(3, this)">Đội D</button>
     </div>
 
-    <input type="text" maxlength="16" class="mobile-input" id="mob-input-name" value="Đội A" placeholder="Tên nhóm (tùy chỉnh)" style="font-size: 18px; padding: 10px;" />
+    <input type="text" maxlength="16" class="mobile-input" id="mob-input-name" value="Đội A" placeholder="Tên nhóm (tùy chỉnh)" style="font-size: 17px; padding: 10px;" />
 
-    <div id="mob-join-msg" style="color: #dc2626; font-weight: 800; font-size: 15px; margin-bottom: 12px;"></div>
+    <div id="mob-join-msg" style="color: #dc2626; font-weight: 800; font-size: 14px; margin-bottom: 10px;"></div>
 
-    <button class="royal-cta-btn green-btn" style="width: 100%; justify-content: center; font-size: 20px; padding: 14px;" onclick="connectMobileToHost()">
+    <button class="royal-cta-btn green-btn" style="width: 100%; justify-content: center; font-size: 18px; padding: 12px;" onclick="connectMobileToHost()">
       ⚔️ KẾT NỐI VÀO PHÒNG
     </button>
-    <button style="margin-top: 14px; background: none; border: none; color: #78350f; font-weight: 800; text-decoration: underline; cursor: pointer;" onclick="exitMobileMode()">
+    <button style="margin-top: 12px; background: none; border: none; color: #78350f; font-weight: 800; text-decoration: underline; cursor: pointer;" onclick="exitMobileMode()">
       ⬅ Quay lại màn hình chính
     </button>
   </div>
 
-  <!-- Bước 2: Màn hình chờ giáo viên điều khiển trên máy chiếu -->
+  <!-- Bước 2: Màn hình chờ & KHO VẬT PHẨM RIÊNG CỦA ĐỘI TRÊN ĐIỆN THOẠI -->
   <div class="mobile-card" id="mob-step-wait" style="display: none;">
-    <div style="font-size: 54px; margin-bottom: 10px;">👑</div>
-    <h2 style="color: #15803d; font-size: 24px; font-weight: 900; margin-bottom: 10px;" id="mob-wait-title">ĐÃ VÀO PHÒNG THÀNH CÔNG!</h2>
-    <p style="font-size: 17px; line-height: 1.5; font-weight: 700; color: #291108;" id="mob-wait-desc">
-      Hãy quan sát màn hình máy chiếu của Giáo viên. Câu hỏi sẽ tự động hiện lên điện thoại khi mở ổ khóa!
+    <div style="font-size: 42px; margin-bottom: 6px;">👑</div>
+    <h2 style="color: #15803d; font-size: 22px; font-weight: 900; margin-bottom: 6px;" id="mob-wait-title">KHO BÁU CỦA ĐỘI BẠN</h2>
+    <p style="font-size: 14px; font-weight: 600; color: #451a03; margin-bottom: 10px;">
+      Trả lời đúng các câu hỏi thử thách để mở khóa các ổ khoá riêng biệt của đội:
+    </p>
+
+    <!-- Kho vật phẩm hiển thị riêng cho học sinh -->
+    <div class="mobile-vault-grid" id="mob-vault-container">
+      <div class="mob-vault-item" id="mob-v-0">🔒 Ổ khóa 1<br><span style="font-size:10px;">Chưa mở</span></div>
+      <div class="mob-vault-item" id="mob-v-1">🔒 Ổ khóa 2<br><span style="font-size:10px;">Chưa mở</span></div>
+      <div class="mob-vault-item" id="mob-v-2">🔒 Ổ khóa 3<br><span style="font-size:10px;">Chưa mở</span></div>
+      <div class="mob-vault-item" id="mob-v-3">🔒 Ổ khóa 4<br><span style="font-size:10px;">Chưa mở</span></div>
+    </div>
+
+    <p style="font-size: 14px; line-height: 1.4; font-weight: 700; color: #291108; margin-top: 8px;" id="mob-wait-desc">
+      Đang chờ Giáo viên mở câu hỏi tiếp theo trên máy chiếu...
     </p>
   </div>
 
-  <!-- Bước 3: Màn hình bấm chọn đáp án A/B/C/D trên điện thoại -->
+  <!-- Bước 3: Màn hình bấm chọn đáp án A/B/C/D (Khóa cứng không cho đổi) -->
   <div class="mobile-card" id="mob-step-question" style="display: none; text-align: left;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-      <span style="background: #991b1b; color: #fde047; padding: 4px 12px; border-radius: 8px; font-weight: 900;" id="mob-q-num">CÂU 1</span>
-      <span style="font-weight: 900; color: #dc2626;" id="mob-q-status">Hãy chọn đáp án!</span>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <span style="background: #991b1b; color: #fde047; padding: 4px 10px; border-radius: 8px; font-weight: 900; font-size:13px;" id="mob-q-num">CÂU 1</span>
+      <span style="font-weight: 900; color: #dc2626; font-size:13px;" id="mob-q-status">Hãy chọn đáp án!</span>
     </div>
-    <div style="font-size: 19px; font-weight: 800; line-height: 1.4; margin-bottom: 14px;" id="mob-q-text"></div>
+    <div style="font-size: 17px; font-weight: 800; line-height: 1.35; margin-bottom: 12px;" id="mob-q-text"></div>
     <div class="mobile-options-list" id="mob-options-list"></div>
   </div>
 
   <!-- Bước 4: Màn hình kết quả câu hỏi trên điện thoại -->
   <div class="mobile-card" id="mob-step-result" style="display: none;">
-    <div style="font-size: 52px; margin-bottom: 8px;" id="mob-res-icon">🎉</div>
-    <h2 style="font-size: 24px; font-weight: 900; margin-bottom: 10px;" id="mob-res-title">CHÍNH XÁC! +10 ĐIỂM</h2>
-    <p style="font-size: 16px; line-height: 1.45; font-weight: 700; color: #291108;" id="mob-res-desc"></p>
+    <div style="font-size: 44px; margin-bottom: 6px;" id="mob-res-icon">🎉</div>
+    <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 8px;" id="mob-res-title">CHÍNH XÁC! +10 ĐIỂM</h2>
+    <p style="font-size: 14px; line-height: 1.4; font-weight: 700; color: #291108;" id="mob-res-desc"></p>
   </div>
 </div>
 
@@ -1568,9 +1546,6 @@
      PHẦN C: JAVASCRIPT ĐIỀU KHIỂN GAME & KẾT NỐI P2P REAL-TIME
      ========================================================================== -->
 <script>
-  /* --------------------------------------------------------------------------
-     1. DỮ LIỆU 4 CÂU HỎI KHOA HỌC TỰ NHIÊN 8
-     -------------------------------------------------------------------------- */
   const QUESTIONS_DATA = [
     {
       id: 0,
@@ -1630,17 +1605,15 @@
     }
   ];
 
-  /* --------------------------------------------------------------------------
-     2. TRẠNG THÁI CHUNG CỦA TRÒ CHƠI
-     -------------------------------------------------------------------------- */
   const gameState = {
-    mode: "offline", // "offline" | "host" | "player"
+    mode: "offline",
     roomPin: "",
     peer: null,
-    hostConnections: [], // Danh sách kết nối từ học sinh gửi tới Host
-    playerConn: null,      // Kết nối từ điện thoại học sinh tới Host
+    hostConnections: [],
+    playerConn: null,
     selectedMobileTeamIdx: 0,
     mobileChosenAnswer: null,
+    mobUnlockedCount: 0,
 
     currentScreen: "screen-welcome",
     history: [],
@@ -1657,7 +1630,6 @@
       [false, false, false, false],
       [false, false, false, false]
     ],
-    // Lưu đáp án các đội gửi lên ở từng câu (ví dụ: ["B", null, "A", "B"])
     submittedAnswers: [
       [null, null, null, null],
       [null, null, null, null],
@@ -1671,9 +1643,6 @@
     soundEnabled: true
   };
 
-  /* --------------------------------------------------------------------------
-     3. ÂM THANH WEB AUDIO API (100% OFFLINE KHÔNG CẦN FILE NHẠC NGOÀI)
-     -------------------------------------------------------------------------- */
   let audioCtx = null;
   function ensureAudioContext() {
     if (!audioCtx) {
@@ -1715,9 +1684,6 @@
     if (gameState.soundEnabled) SoundFX.click();
   }
 
-  /* --------------------------------------------------------------------------
-     4. CO GIÃN KHUNG 16:9 CHUẨN MÁY CHIẾU
-     -------------------------------------------------------------------------- */
   function resizeStage() {
     const stage = document.getElementById("game-stage");
     const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
@@ -1732,9 +1698,6 @@
     else document.exitFullscreen().catch(() => {});
   }
 
-  /* --------------------------------------------------------------------------
-     5. KHỞI TẠO CHẾ ĐỘ CHƠI (OFFLINE 1 MÁY / ONLINE HOST / ONLINE PLAYER)
-     -------------------------------------------------------------------------- */
   function startOfflineHost() {
     gameState.mode = "offline";
     document.getElementById("online-pin-banner").style.display = "none";
@@ -1822,7 +1785,6 @@
         updateScoreboardUI();
         SoundFX.point();
 
-        // Gửi xác nhận lại cho điện thoại học sinh
         conn.send({
           type: "JOIN_ACK",
           teamIndex: idx,
@@ -1853,9 +1815,6 @@
     });
   }
 
-  /* --------------------------------------------------------------------------
-     6. ĐIỀU HƯỚNG 7 MÀN HÌNH TRÊN MÁY CHIẾU
-     -------------------------------------------------------------------------- */
   function goToScreen(targetId, pushHistory = true) {
     SoundFX.click();
     stopTimer();
@@ -1947,9 +1906,6 @@
     });
   }
 
-  /* --------------------------------------------------------------------------
-     7. MÀN 3: CỬA KHO BÁU & 4 Ổ KHÓA
-     -------------------------------------------------------------------------- */
   function renderVaultScreen() {
     const grid = document.getElementById("vault-locks-grid");
     grid.innerHTML = "";
@@ -1993,9 +1949,6 @@
     }
   }
 
-  /* --------------------------------------------------------------------------
-     8. MÀN 4: MÀN CÂU HỎI & ĐỒNG HỒ 10 GIÂY
-     -------------------------------------------------------------------------- */
   function openQuestion(qIndex) {
     gameState.currentQuestionIndex = qIndex;
     const qData = QUESTIONS_DATA[qIndex];
@@ -2003,7 +1956,6 @@
     document.getElementById("q-header-label").textContent = `CÂU HỎI ${qIndex + 1} / 4 — ${qData.lockTitle}`;
     document.getElementById("q-content-text").textContent = qData.question;
 
-    // Ẩn/hiện thanh trạng thái nộp bài online
     const subBar = document.getElementById("live-submissions-bar");
     if (gameState.mode === "host") {
       subBar.style.display = "flex";
@@ -2034,7 +1986,6 @@
     goToScreen("screen-question");
     startTimer();
 
-    // Phát câu hỏi tới toàn bộ điện thoại học sinh
     broadcastToPlayers({
       type: "STATE_QUESTION",
       qIndex: qIndex,
@@ -2095,16 +2046,12 @@
     }
   }
 
-  /* --------------------------------------------------------------------------
-     9. MÀN 5: CÔNG BỐ ĐÁP ÁN & TỰ ĐỘNG CHẤM ĐIỂM ĐỘI ONLINE + CHỈNH TAY
-     -------------------------------------------------------------------------- */
   function revealAnswer() {
     stopTimer();
     const qIndex = gameState.currentQuestionIndex;
     const qData = QUESTIONS_DATA[qIndex];
     gameState.unlockedLocks[qIndex] = true;
 
-    // Nếu đang ở chế độ Online Host, tự động cộng +10đ cho các đội chọn đúng đáp án
     if (gameState.mode === "host") {
       for (let i = 0; i < 4; i++) {
         const chosen = gameState.submittedAnswers[qIndex][i];
@@ -2129,7 +2076,6 @@
     goToScreen("screen-feedback");
     SoundFX.unlock();
 
-    // Gửi kết quả về điện thoại từng đội
     broadcastToPlayers({
       type: "STATE_RESULT",
       qIndex: qIndex,
@@ -2184,9 +2130,6 @@
     else goToScreen("screen-vault");
   }
 
-  /* --------------------------------------------------------------------------
-     10. MÀN 6 & 7: TỔNG KẾT & PHÁO HOA
-     -------------------------------------------------------------------------- */
   function renderFinalStandings() {
     const container = document.getElementById("final-standings-bar");
     container.innerHTML = "";
@@ -2245,9 +2188,9 @@
     if (canvas) canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  /* --------------------------------------------------------------------------
-     11. LOGIC ĐIỆN THOẠI HỌC SINH (PEERJS CLIENT)
-     -------------------------------------------------------------------------- */
+  /* ==========================================================================
+     LOGIC ĐIỆN THOẠI HỌC SINH (KHÓA CỨNG ĐÁP ÁN & HIỆN KHO VẬT PHẨM RIÊNG)
+     ========================================================================== */
   function openMobilePlayerUI() {
     SoundFX.click();
     gameState.mode = "player";
@@ -2336,8 +2279,8 @@
       document.getElementById("mob-score-badge").textContent = `Điểm: ${data.score}`;
       showMobileStep("mob-step-wait");
     } else if (data.type === "STATE_WAIT") {
-      document.getElementById("mob-wait-title").textContent = data.title || "CHỜ LƯỢT TIẾP THEO";
-      document.getElementById("mob-wait-desc").textContent = data.desc || "Quan sát màn hình máy chiếu...";
+      document.getElementById("mob-wait-title").textContent = data.title || "KHO BÁU CỦA ĐỘI BẠN";
+      document.getElementById("mob-wait-desc").textContent = data.desc || "Đang chờ Giáo viên mở câu hỏi tiếp theo trên máy chiếu...";
       showMobileStep("mob-step-wait");
     } else if (data.type === "STATE_QUESTION") {
       gameState.mobileChosenAnswer = null;
@@ -2351,7 +2294,8 @@
       q.options.forEach(opt => {
         const btn = document.createElement("button");
         btn.className = "mobile-opt-btn";
-        btn.innerHTML = `<span style="background:#991b1b; color:#fde047; padding:6px 14px; border-radius:10px; font-weight:900;">${opt.key}</span> <span>${opt.text}</span>`;
+        btn.innerHTML = `<span style="background:#991b1b; color:#fde047; padding:4px 10px; border-radius:8px; font-weight:900;">${opt.key}</span> <span>${opt.text}</span>`;
+        // Khóa cứng ngay lập tức khi bấm, không cho thay đổi
         btn.onclick = () => sendMobileAnswer(data.qIndex, opt.key, btn);
         list.appendChild(btn);
       });
@@ -2365,6 +2309,19 @@
         document.getElementById("mob-score-badge").textContent = `Điểm: ${myTeam.score}`;
       }
       const isRight = gameState.mobileChosenAnswer === data.correctKey;
+      
+      // Nếu đội trả lời đúng, tự động mở khóa ô tương ứng trong kho riêng của đội trên điện thoại
+      if (isRight) {
+        if (gameState.mobUnlockedCount < 4) {
+          const vItem = document.getElementById(`mob-v-${gameState.mobUnlockedCount}`);
+          if (vItem) {
+            vItem.classList.add("unlocked");
+            vItem.innerHTML = `🔓 Khóa ${gameState.mobUnlockedCount + 1}<br><span style="font-size:10px;">Đã mở thành công!</span>`;
+          }
+          gameState.mobUnlockedCount++;
+        }
+      }
+
       document.getElementById("mob-res-icon").textContent = isRight ? "🎉" : "💡";
       document.getElementById("mob-res-title").textContent = isRight
         ? "CHÍNH XÁC! +10 ĐIỂM"
@@ -2383,20 +2340,21 @@
         document.getElementById("mob-score-badge").textContent = `Điểm: ${myTeam.score}`;
       }
       document.getElementById("mob-wait-title").textContent = "🎉 KHO DỤNG CỤ ĐÃ MỞ!";
-      document.getElementById("mob-wait-desc").textContent = "Chúc mừng biệt đội! Hãy nhìn lên máy chiếu để nhận nhiệm vụ thảo luận nhóm lập phương án kiểm định.";
+      document.getElementById("mob-wait-desc").textContent = "Chúc mừng đội của bạn! Hãy hướng lên máy chiếu để cùng tham gia thảo luận nhóm.";
       showMobileStep("mob-step-wait");
     }
   }
 
   function sendMobileAnswer(qIndex, answerKey, btnEl) {
-    if (gameState.mobileChosenAnswer) return;
+    if (gameState.mobileChosenAnswer) return; // Chặn không cho đổi đáp án
     gameState.mobileChosenAnswer = answerKey;
 
+    // Khóa toàn bộ các nút ngay lập tức
     document.querySelectorAll(".mobile-opt-btn").forEach(b => {
       b.disabled = true;
     });
     btnEl.classList.add("chosen");
-    document.getElementById("mob-q-status").textContent = `✔ Đã gửi đáp án ${answerKey}`;
+    document.getElementById("mob-q-status").textContent = `✔ Đã chốt đáp án ${answerKey} (Đã khóa)`;
 
     if (gameState.playerConn && gameState.playerConn.open) {
       gameState.playerConn.send({
