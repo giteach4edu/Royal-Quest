@@ -1366,7 +1366,7 @@
       </button>
     </section>
 
-    <!-- MÀN 6 (GIÁO VIÊN): CHỈ HIỆN THÔNG BÁO CHÚC MỪNG HOÀNH TRÁNG, KHÔNG HIỆN THẺ DỤNG CỤ NỮA -->
+    <!-- MÀN 6 (GIÁO VIÊN): CHỈ HIỆN THÔNG BÁO CHÚC MỪNG HOÀNH TRÁNG -->
     <section class="screen" id="screen-victory">
       <div style="font-size: 80px; margin-bottom: 10px;">👑</div>
       <h2 class="victory-title">
@@ -1592,7 +1592,7 @@
     selectedMobileTeamIdx: 0,
     mobileChosenAnswer: null,
     mobUnlockedCount: 0,
-    teamUnlockedCounts: [0, 0, 0, 0], // Theo dõi số câu đúng của từng đội
+    teamUnlockedCounts: [0, 0, 0, 0],
 
     currentScreen: "screen-welcome",
     history: [],
@@ -1825,10 +1825,6 @@
     } else if (targetId === "screen-victory") {
       SoundFX.victory();
       startConfetti();
-      // Gửi tín hiệu victory kèm số lượng dụng cụ riêng theo từng đội
-      gameState.teams.forEach((t, i) => {
-        const conn = gameState.hostConnections[i]; // Hoặc broadcast chung
-      });
       broadcastToPlayers({ type: "STATE_VICTORY", teamUnlockedCounts: gameState.teamUnlockedCounts });
     } else if (targetId === "screen-mission") {
       stopConfetti();
@@ -2042,7 +2038,7 @@
         if (chosen === qData.correctKey && !gameState.awardedPerQuestion[qIndex][i]) {
           gameState.awardedPerQuestion[qIndex][i] = true;
           gameState.teams[i].score += 10;
-          gameState.teamUnlockedCounts[i]++; // Tăng số lượng dụng cụ mở khóa cho đội này
+          gameState.teamUnlockedCounts[i] = Math.min(4, gameState.teamUnlockedCounts[i] + 1);
         }
       }
     }
@@ -2178,7 +2174,7 @@
   }
 
   /* ==========================================================================
-     LOGIC ĐIỆN THOẠI HỌC SINH (CHO PHÉP ĐỔI ĐÁP ÁN THOẢI MÁI)
+     LOGIC ĐIỆN THOẠI HỌC SINH
      ========================================================================== */
   function openMobilePlayerUI() {
     SoundFX.click();
@@ -2275,7 +2271,7 @@
       gameState.mobileChosenAnswer = null;
       const q = data.questionData;
       document.getElementById("mob-q-num").textContent = `CÂU ${data.qIndex + 1} / 4`;
-      document.getElementById("mob-q-status").textContent = "Bạn có thể đổi đáp án tùy ý trước khi hết giờ!";
+      document.getElementById("mob-q-status").textContent = "Có thể đổi đáp án thoải mái!";
       document.getElementById("mob-q-text").textContent = q.question;
 
       const list = document.getElementById("mob-options-list");
@@ -2284,14 +2280,13 @@
         const btn = document.createElement("button");
         btn.className = "mobile-opt-btn";
         btn.innerHTML = `<span style="background:#991b1b; color:#fde047; padding:4px 10px; border-radius:8px; font-weight:900;">${opt.key}</span> <span>${opt.text}</span>`;
-        // Cho phép bấm đổi đáp án liên tục (không bị vô hiệu hóa nút)
         btn.onclick = () => sendMobileAnswer(data.qIndex, opt.key, btn);
         list.appendChild(btn);
       });
       showMobileStep("mob-step-question");
     } else if (data.type === "TIME_UP") {
       document.querySelectorAll(".mobile-opt-btn").forEach(b => (b.disabled = true));
-      document.getElementById("mob-q-status").textContent = "⏰ ĐÃ HẾT GIỜ (Đã khóa đáp án cuối)";
+      document.getElementById("mob-q-status").textContent = "⏰ ĐÃ HẾT GIỜ!";
     } else if (data.type === "STATE_RESULT") {
       const myTeam = data.teams[gameState.selectedMobileTeamIdx];
       if (myTeam) {
@@ -2318,7 +2313,7 @@
       document.getElementById("mob-res-title").textContent = isRight
         ? "CHÍNH XÁC! +10 ĐIỂM"
         : `ĐÁP ÁN ĐÚNG LÀ ${data.correctKey}`;
-      document.getElementById("mob-res-titlestyle" in document.body ? "" : "").color = isRight ? "#15803d" : "#991b1b";
+      document.getElementById("mob-res-title").style.color = isRight ? "#15803d" : "#991b1b";
       document.getElementById("mob-res-desc").textContent = data.explanation;
       showMobileStep("mob-step-result");
     } else if (data.type === "SCORE_UPDATE") {
@@ -2366,12 +2361,11 @@
   function sendMobileAnswer(qIndex, answerKey, btnEl) {
     gameState.mobileChosenAnswer = answerKey;
 
-    // Đổi màu trực quan giao diện chọn của học sinh để biết đang chọn nút nào, cho phép bấm đổi sang nút khác
     document.querySelectorAll(".mobile-opt-btn").forEach(b => {
       b.classList.remove("chosen");
     });
     btnEl.classList.add("chosen");
-    document.getElementById("mob-q-status").textContent = `✔ Đã chọn ${answerKey} (Vẫn có thể đổi ý trước khi hết giờ!)`;
+    document.getElementById("mob-q-status").textContent = `✔ Đã chọn ${answerKey} (Có thể đổi ý)`;
 
     if (gameState.playerConn && gameState.playerConn.open) {
       gameState.playerConn.send({
