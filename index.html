@@ -3,260 +3,696 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mở khóa kho dụng cụ hoàng gia</title>
+
 <style>
-:root{--red:#852b36;--gold:#dcb364;--ink:#51372a;--cream:#fff8eb;--blue:#dceeff;--green:#d9f4df}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,'Segoe UI',sans-serif;background:radial-gradient(circle at top,#fff6d4,#d8a96f);color:var(--ink)}
-main{max-width:1150px;margin:auto;padding:14px}
-header{background:linear-gradient(110deg,#a83c45,#72212d);border:5px solid var(--gold);border-radius:20px;text-align:center;color:#fff7df;padding:14px}
-h1{font-size:clamp(22px,3.5vw,38px);margin:7px 0}
-.top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:13px 0}
-.pill{background:#fff8e8;padding:9px 14px;border:2px solid var(--gold);border-radius:30px;font-weight:700}
-button{font:inherit;font-weight:800;cursor:pointer;border-radius:12px;padding:11px 17px;border:2px solid var(--gold)}
-button:disabled{cursor:not-allowed;opacity:.48}
-.primary{background:var(--red);color:white}
-.secondary{background:#fff8e9;color:#743a31}
-.screen{display:none;background:linear-gradient(#fffbf2,#f6e3bd);padding:27px;border:5px double #c89b55;border-radius:20px;min-height:480px}
-.screen.active{display:block}
-.center{text-align:center}
-.hero{font-size:clamp(60px,9vw,105px);margin:22px 0}
-.title{color:var(--red);font-size:clamp(23px,3vw,35px);font-weight:900}
-.lead{max-width:820px;margin:24px auto;line-height:1.6;font-size:clamp(18px,2vw,24px)}
-.status{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.locks{font-size:32px;white-space:nowrap;letter-spacing:4px}
-.timer-area{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.clock{display:grid;place-items:center;width:75px;height:75px;border-radius:50%;background:var(--red);border:4px solid var(--gold);color:white;font-size:30px;font-weight:900}
-.clock.end{background:#555}
-.question{font-size:clamp(23px,2.7vw,34px);line-height:1.4;text-align:center;color:#7d2b36;margin:24px 0}
-.answers{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.answer{display:flex;align-items:center;text-align:left;gap:12px;min-height:90px;background:#fffdf8;border:3px solid #dfb771;color:var(--ink);font-size:clamp(17px,1.9vw,23px);padding:13px}
-.answer .letter{display:grid;place-items:center;min-width:44px;height:44px;border-radius:9px;background:var(--red);color:white}
-.answer.picked{background:var(--blue);border-color:#3b7dc0;box-shadow:0 0 0 2px #9cc9ef}
-.answer.correct{background:var(--green);border-color:#178150}
-.answer.incorrect{background:#ffe6e2;border-color:#b65749}
-.hint{margin:18px 0;background:#fffbef;border:2px dashed #cda35e;padding:13px;border-radius:13px;font-size:18px;line-height:1.45}
-.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
-.hidden{display:none!important}
-.reward{background:#fffcf2;border:3px solid var(--gold);border-radius:17px;max-width:700px;margin:25px auto;padding:25px}
-.reward-icon{font-size:80px}
-.reward h2{color:var(--red)}
-.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}
-.tool{background:#fffdf6;border:3px solid var(--gold);border-radius:15px;padding:17px;text-align:center}
-.tool .symbol{font-size:55px}
-.tool h3{color:var(--red);margin:8px 0}
-.task{max-width:870px;margin:15px auto;padding:19px;border:2px solid var(--gold);border-radius:15px;background:#fffdf6;font-size:21px}
-.bar{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:20px 0}
-@media(max-width:750px){.answers{grid-template-columns:1fr}.tools{grid-template-columns:repeat(2,1fr)}.screen{padding:15px}.status{justify-content:center}}
+:root {
+  --wine:#842b36;
+  --red:#ac3d45;
+  --gold:#e5b65e;
+  --ink:#4e342a;
+  --cream:#fff8e8;
+  --blue:#e1f0ff;
+  --green:#d9f6e4;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  min-height:100vh;
+  font-family:Arial,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:radial-gradient(
+    circle at 50% 0%,
+    #fff4cd,
+    #d8a96e
+  );
+}
+
+main {
+  max-width:1180px;
+  margin:auto;
+  padding:14px;
+}
+
+header {
+  padding:15px;
+  text-align:center;
+  color:#fff6de;
+  border:5px solid var(--gold);
+  border-radius:22px;
+  background:linear-gradient(
+    110deg,
+    var(--red),
+    #70212e
+  );
+  box-shadow:0 7px 22px #633a2e45;
+}
+
+header h1 {
+  font-size:clamp(24px,3.5vw,41px);
+  margin:8px 0;
+}
+
+.topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:14px 0;
+}
+
+.pill {
+  background:#fff8e8;
+  border:2px solid #d5a866;
+  border-radius:25px;
+  padding:9px 14px;
+  font-weight:bold;
+}
+
+button {
+  font:inherit;
+  font-weight:800;
+  cursor:pointer;
+  border:2px solid var(--gold);
+  border-radius:12px;
+  padding:12px 18px;
+}
+
+button:disabled {
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.primary {
+  color:white;
+  background:var(--wine);
+}
+
+.primary:hover:not(:disabled) {
+  background:#a43a47;
+}
+
+.secondary {
+  color:#7c3933;
+  background:#fff7e5;
+}
+
+.secondary:hover:not(:disabled) {
+  background:#ffe9bd;
+}
+
+.screen {
+  display:none;
+  min-height:490px;
+  padding:27px;
+  border:5px double #c99a55;
+  border-radius:22px;
+  background:linear-gradient(
+    #fffbf2,
+    #f6e2bc
+  );
+  box-shadow:0 12px 26px #623b2633;
+}
+
+.screen.active {
+  display:block;
+}
+
+.center {
+  text-align:center;
+}
+
+.hero {
+  font-size:clamp(60px,9vw,105px);
+  margin:22px 0;
+}
+
+.title {
+  color:var(--wine);
+  font-size:clamp(25px,3vw,37px);
+  font-weight:900;
+  margin:16px 0;
+}
+
+.lead {
+  max-width:850px;
+  margin:22px auto;
+  line-height:1.6;
+  font-size:clamp(19px,2vw,24px);
+}
+
+/* KHU VỰC CÂU HỎI */
+
+.status {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.locks {
+  font-size:clamp(24px,3vw,36px);
+  letter-spacing:3px;
+  white-space:nowrap;
+}
+
+.timer-controls {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.clock {
+  display:grid;
+  place-items:center;
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  border:4px solid var(--gold);
+  background:var(--wine);
+  color:white;
+  font-size:30px;
+  font-weight:900;
+}
+
+.clock.end {
+  background:#555;
+}
+
+.question {
+  margin:25px auto;
+  text-align:center;
+  line-height:1.4;
+  color:var(--wine);
+  font-size:clamp(23px,2.7vw,35px);
+}
+
+.answers {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.answer {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-height:92px;
+  padding:14px;
+  text-align:left;
+  color:var(--ink);
+  background:#fffdf8;
+  border:3px solid #ddb36c;
+  font-size:clamp(17px,1.9vw,23px);
+}
+
+.answer .letter {
+  display:grid;
+  place-items:center;
+  flex:0 0 45px;
+  height:45px;
+  color:white;
+  background:var(--wine);
+  border-radius:9px;
+}
+
+/* Xanh dương: phương án HS giơ */
+.answer.picked {
+  background:var(--blue);
+  border-color:#357ab9;
+  box-shadow:0 0 0 2px #a1cbed;
+}
+
+/* Xanh lá: đáp án đúng khi công bố */
+.answer.correct {
+  background:var(--green);
+  border-color:#198557;
+}
+
+/* Đỏ nhạt: phương án sai đã chọn */
+.answer.incorrect {
+  background:#ffe8e2;
+  border-color:#b65a49;
+}
+
+.note {
+  margin:18px 0;
+  padding:15px;
+  border:2px dashed #cda15c;
+  border-radius:13px;
+  background:#fffaf0;
+  font-size:18px;
+  line-height:1.5;
+}
+
+.controls {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:23px;
+}
+
+.hidden {
+  display:none!important;
+}
+
+/* MỞ KHÓA */
+
+.reward-card {
+  max-width:720px;
+  margin:25px auto;
+  padding:28px;
+  border:3px solid var(--gold);
+  border-radius:18px;
+  background:#fffdf7;
+}
+
+.reward-icon {
+  font-size:90px;
+}
+
+.reward-card h2 {
+  color:var(--wine);
+  font-size:clamp(27px,3vw,39px);
+}
+
+/* TỔNG KẾT BỐN Ô */
+
+.collection {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+  margin:25px auto;
+}
+
+.tool {
+  padding:20px 10px;
+  background:#fffdf7;
+  border:3px solid var(--gold);
+  border-radius:16px;
+  text-align:center;
+}
+
+.tool .emoji {
+  font-size:60px;
+}
+
+.tool h3 {
+  color:var(--wine);
+  font-size:clamp(17px,1.7vw,22px);
+  margin:12px 0;
+}
+
+.task {
+  max-width:900px;
+  margin:15px auto;
+  padding:20px;
+  background:#fffdf7;
+  border:2px solid #d5a761;
+  border-radius:15px;
+  font-size:21px;
+}
+
+@media(max-width:850px) {
+  .collection {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:720px) {
+  .answers {
+    grid-template-columns:1fr;
+  }
+
+  .screen {
+    padding:15px;
+  }
+
+  .answer {
+    min-height:70px;
+  }
+
+  .status {
+    justify-content:center;
+  }
+
+  .timer-controls {
+    justify-content:center;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <main>
+
 <header>
   <div>👑 BÍ ẨN HAI VIÊN HẠT HOÀNG GIA</div>
   <h1>🔐 MỞ KHÓA KHO DỤNG CỤ HOÀNG GIA</h1>
 </header>
 
-<div class="top">
-  <span class="pill">KHTN 8 · HĐ3 · Giơ thẻ A/B/C/D</span>
+<div class="topbar">
+  <span class="pill">
+    KHTN 8 · HĐ3 · Giơ thẻ A/B/C/D
+  </span>
+
   <div>
-    <button class="secondary" id="fullscreen">⛶ Toàn màn hình</button>
-    <button class="secondary" id="restart">↻ Chơi lại</button>
+    <button class="secondary" id="fullscreen">
+      ⛶ Toàn màn hình
+    </button>
+
+    <button class="secondary" id="restart">
+      ↻ Chơi lại
+    </button>
   </div>
 </div>
 
-<!-- MÀN GIỚI THIỆU -->
+<!-- MÀN 1: GIỚI THIỆU -->
+
 <section id="intro" class="screen active center">
-  <div class="hero">🏰📜👑</div>
-  <div class="title">MẬT LỆNH HOÀNG GIA</div>
+
+  <div class="hero">🏰 📜 👑</div>
+
+  <div class="title">
+    MẬT LỆNH HOÀNG GIA
+  </div>
+
   <p class="lead">
-    Bốn ổ khóa đang bảo vệ kho dụng cụ kiểm định.
-    Các biệt đội hãy vượt qua <b>4 thử thách</b>
-    để khám phá dụng cụ và kiến thức cần thiết
-    trước khi thực hành!
+    Kho dụng cụ kiểm định đang bị khóa
+    bởi <b>4 ổ khóa khoa học!</b>
+    <br><br>
+    Các biệt đội hãy vượt qua
+    <b>4 thử thách</b> để khám phá
+    những dụng cụ và thông tin cần thiết
+    cho nhiệm vụ kiểm định viên hạt.
   </p>
-  <button class="primary" id="goRules">NHẬN MẬT LỆNH ➜</button>
+
+  <button class="primary" id="goRules">
+    NHẬN MẬT LỆNH ➜
+  </button>
+
 </section>
 
-<!-- MÀN LUẬT CHƠI -->
+<!-- MÀN 2: LUẬT CHƠI -->
+
 <section id="rules" class="screen center">
+
   <div class="title">⚔️ LUẬT CHƠI</div>
+
   <div class="hero">🔒🔒🔒🔒</div>
+
   <p class="lead">
-    Mỗi câu có <b>10 giây hội ý</b>.
-    Khi cô ra hiệu, các đội
+    Mỗi câu hỏi có
+    <b>10 giây hội ý</b>.
+    <br><br>
+    Khi nghe hiệu lệnh,
+    các biệt đội
     <b>giơ đồng loạt thẻ A/B/C/D</b>.
-    Giáo viên có thể nhấp đánh dấu những phương án
-    các đội đã giơ, sau đó
-    <b>công bố đáp án</b> để mở ổ khóa.
+    <br><br>
+    Giáo viên ghi nhận lựa chọn,
+    công bố đáp án và mở khóa.
   </p>
-  <button class="primary" id="begin">BẮT ĐẦU ➜</button>
+
+  <button class="primary" id="begin">
+    BẮT ĐẦU THỬ THÁCH ➜
+  </button>
+
 </section>
 
-<!-- MÀN CÂU HỎI -->
+<!-- MÀN 3: CÂU HỎI -->
+
 <section id="quiz" class="screen">
+
   <div class="status">
-    <span id="round" class="pill">THỬ THÁCH 1/4</span>
-    <span id="locks" class="locks">🔒🔒🔒🔒</span>
-    <div class="timer-area">
-      <div id="clock" class="clock">10</div>
-      <button class="secondary" id="startTime">▶ Bắt đầu</button>
-      <button class="secondary" id="pauseTime" disabled>⏸ Tạm dừng</button>
-      <button class="secondary" id="resetTime">↺ Đặt lại</button>
+
+    <span class="pill" id="round"></span>
+
+    <span class="locks" id="locks"></span>
+
+    <div class="timer-controls">
+
+      <div class="clock" id="clock">10</div>
+
+      <button class="secondary" id="startTime">
+        ▶ Bắt đầu
+      </button>
+
+      <button class="secondary" id="pauseTime" disabled>
+        ⏸ Tạm dừng
+      </button>
+
+      <button class="secondary" id="resetTime">
+        ↺ Đặt lại
+      </button>
+
     </div>
+
   </div>
 
-  <h2 id="question" class="question"></h2>
-  <div id="answers" class="answers"></div>
+  <h2 class="question" id="question"></h2>
 
-  <div id="hint" class="hint center">
-    Khi các đội giơ thẻ, cô có thể nhấp vào những
-    phương án được chọn. Nhấp lại để bỏ đánh dấu.
+  <div class="answers" id="answers"></div>
+
+  <div class="note center" id="hint">
+    👀 Học sinh hội ý và giơ thẻ đồng loạt.
+    Cô có thể nhấp vào những phương án
+    các đội đã lựa chọn.
+    <br>
+    Màu xanh dương chỉ ghi nhận lựa chọn,
+    không có nghĩa đó là đáp án đúng.
   </div>
-  <div id="feedback" class="hint center hidden" aria-live="polite"></div>
+
+  <div class="note center hidden"
+       id="feedback" aria-live="polite">
+  </div>
 
   <div class="controls">
-    <button id="reveal" class="primary">🔍 CÔNG BỐ ĐÁP ÁN</button>
-    <button id="rewardBtn" class="primary hidden">🔓 MỞ KHÓA ➜</button>
+
+    <button class="primary" id="reveal">
+      🔍 CÔNG BỐ ĐÁP ÁN
+    </button>
+
+    <button class="primary hidden" id="rewardBtn">
+      🔓 MỞ KHÓA ➜
+    </button>
+
   </div>
+
 </section>
 
-<!-- MÀN NHẬN DỤNG CỤ -->
+<!-- MÀN 4: NHẬN DỤNG CỤ / KIẾN THỨC -->
+
 <section id="reward" class="screen center">
-  <div class="title">🎉 MỞ KHÓA THÀNH CÔNG!</div>
-  <div id="rewardLocks" class="locks bar"></div>
-  <div class="reward">
-    <div id="rewardIcon" class="reward-icon"></div>
-    <h2 id="rewardName"></h2>
-    <p id="rewardDescription" class="lead"></p>
+
+  <div class="title">
+    🎉 MỞ KHÓA THÀNH CÔNG!
   </div>
-  <button id="next" class="primary">
+
+  <div class="locks" id="rewardLocks"></div>
+
+  <div class="reward-card">
+
+    <div class="reward-icon" id="rewardIcon"></div>
+
+    <h2 id="rewardName"></h2>
+
+  </div>
+
+  <p class="lead">
+    Hãy ghi nhớ khám phá này
+    để chuẩn bị cho nhiệm vụ tiếp theo!
+  </p>
+
+  <button class="primary" id="next">
     THỬ THÁCH TIẾP THEO ➜
   </button>
+
 </section>
 
-<!-- MÀN TỔNG KẾT -->
+<!-- MÀN 5: TỔNG KẾT -->
+
 <section id="finish" class="screen center">
-  <div class="title">🔓 KHO DỤNG CỤ ĐÃ MỞ!</div>
-  <p class="lead">
-    Các biệt đội đã khám phá những dụng cụ
-    và thông tin cần thiết.
-  </p>
-  <div id="tools" class="tools"></div>
-  <div class="hint">
-    <b>MẬT LỆNH TIẾP THEO:</b>
-    Muốn xác định khối lượng riêng của viên hạt,
-    chúng ta cần đo những đại lượng nào
-    và sử dụng các dụng cụ vừa tìm được ra sao?
+
+  <div class="title">
+    🔓 KHO DỤNG CỤ ĐÃ MỞ!
   </div>
-  <button id="goDiscuss" class="primary">
+
+  <p class="lead">
+    Các biệt đội đã vượt qua
+    bốn thử thách và thu thập
+    được những dụng cụ, kiến thức cần thiết.
+  </p>
+
+  <div class="collection" id="tools"></div>
+
+  <div class="note">
+    <b>📜 MẬT LỆNH TIẾP THEO:</b>
+    <br><br>
+    Muốn xác định khối lượng riêng của viên hạt,
+    chúng ta cần biết những đại lượng nào?
+    <br>
+    Các dụng cụ vừa khám phá
+    có thể giúp ích ra sao?
+  </div>
+
+  <button class="primary" id="goDiscuss">
     🤝 HỘI Ý BIỆT ĐỘI ➜
   </button>
+
 </section>
 
-<!-- MÀN HỘI Ý BIỆT ĐỘI -->
+<!-- MÀN 6: HỘI Ý BIỆT ĐỘI -->
+
 <section id="discuss" class="screen center">
-  <div class="hero">📜🤝</div>
-  <div class="title">HỘI Ý BIỆT ĐỘI</div>
+
+  <div class="hero">📜 🤝</div>
+
+  <div class="title">
+    HỘI Ý BIỆT ĐỘI
+  </div>
+
   <p class="lead">
-    Dựa vào những dụng cụ vừa khám phá,
-    hãy đề xuất <b>những công việc cần làm</b>
+    Dựa vào các dụng cụ và thông tin
+    vừa khám phá, hãy đề xuất
+    <b>những công việc cần thực hiện</b>
     để xác định khối lượng riêng của viên hạt.
   </p>
+
   <div class="task">
-    ① Mỗi thành viên ghi một ý tưởng vào phiếu khăn trải bàn.
+    ✍️ Mỗi thành viên ghi một ý tưởng
+    vào ô cá nhân trên phiếu khăn trải bàn.
   </div>
+
   <div class="task">
-    ② Cả nhóm trao đổi, thống nhất các đại lượng cần đo
-    và dụng cụ tương ứng.
+    💬 Cả nhóm trao đổi và thống nhất
+    ý tưởng chung vào ô trung tâm.
   </div>
-  <div class="hint">
-    📋 <b>Sản phẩm:</b> Ý tưởng chung của biệt đội.
-    Việc sắp xếp và thực hành quy trình 6 bước
-    sẽ thực hiện trong HĐ4.
+
+  <div class="note">
+    <b>Sản phẩm:</b>
+    Các đại lượng cần xác định,
+    dụng cụ cần sử dụng và công dụng của chúng.
+    <br><br>
+    Chưa cần ghép quy trình 6 bước;
+    phần này sẽ thực hiện ở HĐ4.
   </div>
+
 </section>
+
 </main>
 
 <script>
-// ========================================
-// 1. BỐN CÂU HỎI TRÒ CHƠI
-// ========================================
+
+// ==========================================
+// 1. BỐN CÂU HỎI
+// ==========================================
+
 const questions = [
+
   {
     title: "Truy tìm dụng cụ",
+
     q: "Muốn xác định khối lượng của viên hạt, biệt đội cần dùng dụng cụ nào?",
+
     answers: [
       "Ống đong",
       "Cân điện tử",
       "Lực kế",
       "Thước thẳng"
     ],
+
     correct: 1,
-    explain: "Cân điện tử dùng để đo khối lượng m của viên hạt.",
+
+    why: "Cân điện tử dùng để đo khối lượng. Lực kế dùng để đo lực.",
+
     reward: {
       icon: "⚖️",
-      name: "Cân điện tử",
-      description: "Dùng để đo khối lượng của viên hạt."
+      name: "Cân điện tử"
     }
   },
+
   {
     title: "Bí mật thể tích",
+
     q: "Để xác định thể tích của viên hạt bằng cách đo mức nước dâng lên, biệt đội cần dùng dụng cụ nào?",
+
     answers: [
       "Cân điện tử",
       "Thước thẳng",
       "Ống đong",
       "Lực kế"
     ],
+
     correct: 2,
-    explain: "Ống đong có vạch chia giúp đọc thể tích nước trước và sau khi nhúng ngập viên hạt.",
+
+    why: "Ống đong có vạch chia giúp đọc thể tích nước.",
+
     reward: {
       icon: "🧪",
-      name: "Ống đong và nước",
-      description: "Giúp xác định thể tích viên hạt qua độ tăng thể tích nước."
+      name: "Ống đong và nước"
     }
   },
+
   {
     title: "Thao tác khéo léo",
+
     q: "Khi đưa viên hạt vào ống đong, cách nào giúp hạn chế nước bắn ra ngoài?",
+
     answers: [
       "Thả vật từ trên cao",
       "Hạ vật bằng sợi chỉ",
       "Lắc nhẹ ống đong",
       "Đổ nước đầy miệng ống"
     ],
+
     correct: 1,
-    explain: "Dùng sợi chỉ mảnh để hạ viên hạt nhẹ nhàng vào nước, tránh làm nước bắn ra ngoài.",
+
+    why: "Sợi chỉ mảnh giúp hạ viên hạt nhẹ nhàng vào nước.",
+
     reward: {
       icon: "🧵",
-      name: "Sợi chỉ mảnh",
-      description: "Giúp đưa viên hạt vào ống đong nhẹ nhàng."
+      name: "Sợi chỉ mảnh"
     }
   },
+
   {
-    title: "Giải mã mực nước",
-    q: "Mực nước trong ống đong tăng từ 30 mL lên 42 mL sau khi nhúng ngập viên hạt. Thể tích viên hạt là bao nhiêu?",
+    title: "Bí mật mực nước",
+
+    q: "Khi nhúng ngập viên hạt vào ống đong chứa nước, dựa vào đâu để xác định thể tích của viên hạt?",
+
     answers: [
-      "30 cm³",
-      "42 cm³",
-      "72 cm³",
-      "12 cm³"
+      "Thể tích nước ban đầu",
+      "Thể tích nước sau khi nhúng vật",
+      "Phần thể tích nước tăng thêm",
+      "Khối lượng nước trong ống đong"
     ],
-    correct: 3,
-    explain: "V = 42 − 30 = 12 mL = 12 cm³.",
+
+    correct: 2,
+
+    why: "Thể tích viên hạt bằng phần thể tích nước tăng thêm, tức V = V₂ − V₁.",
+
     reward: {
       icon: "📐",
-      name: "Nguyên tắc xác định thể tích",
-      description: "Thể tích vật bằng độ tăng thể tích nước: V = V₂ − V₁."
+      name: "Nguyên tắc xác định thể tích"
     }
   }
+
 ];
 
-// ========================================
+// ==========================================
 // 2. TRẠNG THÁI TRÒ CHƠI
-// ========================================
+// ==========================================
+
 const $ = id => document.getElementById(id);
 
 let index = 0;
@@ -268,21 +704,27 @@ let paused = false;
 let revealed = false;
 let chosen = new Set();
 
-// ========================================
+// ==========================================
 // 3. CHUYỂN MÀN HÌNH
-// ========================================
+// ==========================================
+
 function show(id) {
-  document.querySelectorAll(".screen").forEach(s => {
-    s.classList.toggle("active", s.id === id);
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.toggle(
+      "active",
+      screen.id === id
+    );
   });
-  window.scrollTo(0, 0);
+
+  window.scrollTo(0,0);
 }
 
-// ========================================
-// 4. ĐỒNG HỒ ĐẾM NGƯỢC
-// ========================================
+// ==========================================
+// 4. ĐỒNG HỒ
+// ==========================================
+
 function stopTimer() {
-  if (timer !== null) {
+  if(timer !== null) {
     clearInterval(timer);
     timer = null;
   }
@@ -291,7 +733,7 @@ function stopTimer() {
 
 function updateTime() {
   $("clock").textContent = time;
-  $("clock").classList.toggle("end", time === 0);
+  $("clock").classList.toggle("end",time === 0);
 
   $("startTime").disabled =
     revealed || running || time === 0;
@@ -306,37 +748,37 @@ function updateTime() {
 }
 
 function startTimer() {
-  if (running || revealed || time === 0) return;
+  if(running || revealed || time === 0) return;
 
   stopTimer();
   running = true;
   paused = false;
 
   timer = setInterval(() => {
-    time = Math.max(0, time - 1);
+    time = Math.max(0,time - 1);
 
-    if (time === 0) stopTimer();
+    if(time === 0) stopTimer();
 
     updateTime();
-  }, 1000);
+  },1000);
 
   updateTime();
 }
 
 function togglePause() {
-  if (revealed || time === 0) return;
+  if(revealed || time === 0) return;
 
-  if (running) {
+  if(running) {
     stopTimer();
     paused = true;
     updateTime();
-  } else if (paused) {
+  } else if(paused) {
     startTimer();
   }
 }
 
 function resetTimer() {
-  if (revealed) return;
+  if(revealed) return;
 
   stopTimer();
   paused = false;
@@ -344,44 +786,52 @@ function resetTimer() {
   updateTime();
 }
 
-// ========================================
-// 5. HIỂN THỊ ĐÁP ÁN
-// ========================================
+// ==========================================
+// 5. HIỂN THỊ CÁC PHƯƠNG ÁN
+// ==========================================
+
 function drawAnswers() {
   const root = $("answers");
   root.replaceChildren();
 
-  questions[index].answers.forEach((answer, i) => {
+  questions[index].answers.forEach((answer,i) => {
+
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "answer";
 
-    if (chosen.has(i)) {
+    if(chosen.has(i)) {
       btn.classList.add("picked");
     }
 
-    if (revealed) {
+    if(revealed) {
       btn.disabled = true;
 
-      if (i === questions[index].correct) {
+      if(i === questions[index].correct) {
         btn.classList.add("correct");
-      } else if (chosen.has(i)) {
+      } else if(chosen.has(i)) {
         btn.classList.add("incorrect");
       }
     }
-
-    btn.setAttribute("aria-pressed", String(chosen.has(i)));
 
     const letter = document.createElement("span");
     letter.className = "letter";
     letter.textContent = "ABCD"[i];
 
-    btn.append(letter, document.createTextNode(answer));
+    btn.append(
+      letter,
+      document.createTextNode(answer)
+    );
+
+    btn.setAttribute(
+      "aria-pressed",
+      String(chosen.has(i))
+    );
 
     btn.onclick = () => {
-      if (revealed) return;
+      if(revealed) return;
 
-      if (chosen.has(i)) {
+      if(chosen.has(i)) {
         chosen.delete(i);
       } else {
         chosen.add(i);
@@ -394,9 +844,10 @@ function drawAnswers() {
   });
 }
 
-// ========================================
+// ==========================================
 // 6. HIỂN THỊ CÂU HỎI
-// ========================================
+// ==========================================
+
 function renderQuestion() {
   stopTimer();
 
@@ -406,10 +857,11 @@ function renderQuestion() {
   chosen = new Set();
 
   $("round").textContent =
-    `THỬ THÁCH ${index + 1}/4 – ${questions[index].title}`;
+    `THỬ THÁCH ${index+1}/4 – ${questions[index].title}`;
 
   $("locks").textContent =
-    "🔓".repeat(unlocked) + "🔒".repeat(4 - unlocked);
+    "🔓".repeat(unlocked)
+    + "🔒".repeat(4-unlocked);
 
   $("question").textContent = questions[index].q;
 
@@ -421,15 +873,14 @@ function renderQuestion() {
   updateTime();
   drawAnswers();
   show("quiz");
-
-  // Đồng hồ chỉ chạy khi giáo viên bấm Bắt đầu.
 }
 
-// ========================================
+// ==========================================
 // 7. CÔNG BỐ ĐÁP ÁN
-// ========================================
+// ==========================================
+
 function revealAnswer() {
-  if (revealed) return;
+  if(revealed) return;
 
   revealed = true;
   stopTimer();
@@ -441,69 +892,70 @@ function revealAnswer() {
   const q = questions[index];
 
   $("feedback").textContent =
-    `✅ Đáp án ${"ABCD"[q.correct]}. ${q.explain}`;
+    `✅ Đáp án ${"ABCD"[q.correct]}. ${q.why}`;
 
   $("feedback").classList.remove("hidden");
   $("reveal").classList.add("hidden");
   $("rewardBtn").classList.remove("hidden");
 }
 
-// ========================================
-// 8. MỞ KHÓA – NHẬN DỤNG CỤ
-// ========================================
-function reward() {
-  if (!revealed) return;
+// ==========================================
+// 8. MỞ KHÓA
+// ==========================================
 
-  unlocked = index + 1;
+function reward() {
+  if(!revealed) return;
+
+  unlocked = index+1;
   const p = questions[index].reward;
 
   $("rewardLocks").textContent =
-    "🔓".repeat(unlocked) + "🔒".repeat(4 - unlocked);
+    "🔓".repeat(unlocked)
+    + "🔒".repeat(4-unlocked);
 
   $("rewardIcon").textContent = p.icon;
   $("rewardName").textContent = p.name;
-  $("rewardDescription").textContent = p.description;
 
   $("next").textContent =
     index === 3
-      ? "XEM KẾT QUẢ MỞ KHO ➜"
+      ? "XEM KHO DỤNG CỤ ➜"
       : "THỬ THÁCH TIẾP THEO ➜";
 
   show("reward");
 }
 
-// ========================================
-// 9. CHUYỂN CÂU TIẾP THEO
-// ========================================
+// ==========================================
+// 9. TỔNG KẾT BỐN KHÁM PHÁ
+// ==========================================
+
 function finish() {
   const root = $("tools");
   root.replaceChildren();
 
   questions.forEach(q => {
-    const tool = q.reward;
+    const p = q.reward;
+
     const card = document.createElement("div");
     card.className = "tool";
 
-    const icon = document.createElement("div");
-    icon.className = "symbol";
-    icon.textContent = tool.icon;
+    const symbol = document.createElement("div");
+    symbol.className = "emoji";
+    symbol.textContent = p.icon;
 
     const title = document.createElement("h3");
-    title.textContent = tool.name;
+    title.textContent = p.name;
 
-    const desc = document.createElement("p");
-    desc.textContent = tool.description;
-
-    card.append(icon, title, desc);
+    card.append(symbol,title);
     root.append(card);
   });
 
   show("finish");
 }
 
-// ========================================
+// ==========================================
 // 10. CHƠI LẠI
-// ========================================
+// ==========================================
+
 function reset() {
   stopTimer();
 
@@ -518,11 +970,11 @@ function reset() {
   show("intro");
 }
 
-// ========================================
-// 11. GÁN CÁC NÚT ĐIỀU KHIỂN
-// ========================================
-$("goRules").onclick = () => show("rules");
+// ==========================================
+// 11. ĐIỀU KHIỂN
+// ==========================================
 
+$("goRules").onclick = () => show("rules");
 $("begin").onclick = renderQuestion;
 
 $("startTime").onclick = startTimer;
@@ -533,7 +985,7 @@ $("reveal").onclick = revealAnswer;
 $("rewardBtn").onclick = reward;
 
 $("next").onclick = () => {
-  if (index < 3) {
+  if(index < 3) {
     index++;
     renderQuestion();
   } else {
@@ -544,16 +996,20 @@ $("next").onclick = () => {
 $("goDiscuss").onclick = () => show("discuss");
 
 $("restart").onclick = () => {
-  if (confirm("Chơi lại từ đầu?")) reset();
+  if(confirm("Chơi lại từ đầu?")) {
+    reset();
+  }
 };
 
 $("fullscreen").onclick = () => {
-  if (document.fullscreenElement) {
+  if(document.fullscreenElement) {
     document.exitFullscreen();
   } else {
     document.documentElement.requestFullscreen?.();
   }
 };
+
 </script>
+
 </body>
 </html>
