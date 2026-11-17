@@ -42,21 +42,21 @@
       background-color: #140406;
       font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
       color: var(--text-light);
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
+    /* ==========================================================================
+       CHẾ ĐỘ RESPONSIVE CHO MÁY TÍNH / MÁY CHIẾU & ĐIỆN THOẠI
+       ========================================================================== */
     #stage-wrapper {
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       background: radial-gradient(circle at center, #2d0609 0%, #0d0203 100%);
+      padding: 10px;
     }
 
     #game-stage {
@@ -349,6 +349,7 @@
       gap: 24px;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
     }
 
     .section-heading {
@@ -915,7 +916,7 @@
     }
 
     /* ==========================================================================
-       GIAO DIỆN ĐIỆN THOẠI HỌC SINH (TỐI ƯU KÍCH THƯỚC, HIỂN THỊ KHO VẬT PHẨM RIÊNG)
+       GIAO DIỆN ĐIỆN THOẠI HỌC SINH (TỰ ĐỘNG FULL MÀN HÌNH DI ĐỘNG, CÓ CUỘN)
        ========================================================================== */
     #player-mobile-app {
       display: none;
@@ -941,6 +942,7 @@
       margin-bottom: 14px;
       font-weight: 800;
       font-size: 15px;
+      flex-shrink: 0;
     }
 
     .mobile-card {
@@ -951,10 +953,9 @@
       padding: 20px 16px;
       text-align: center;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      margin: auto 0;
+      margin: auto;
       width: 100%;
       max-width: 480px;
-      align-self: center;
     }
 
     .mobile-input {
@@ -992,7 +993,6 @@
       border-color: #fde047;
     }
 
-    /* Kho vật phẩm cá nhân/đội hiển thị trên điện thoại học sinh */
     .mobile-vault-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1041,13 +1041,19 @@
       border-color: #93c5fd;
     }
     .mobile-opt-btn:disabled { opacity: 0.8; cursor: not-allowed; }
+
+    /* Media query hỗ trợ tự động scale mượt trên mọi màn hình di động */
+    @media (max-width: 1620px) {
+      #stage-wrapper {
+        align-items: flex-start;
+        justify-content: center;
+        overflow: auto;
+      }
+    }
   </style>
 </head>
 <body>
 
-<!-- ==========================================================================
-     PHẦN A: SÂN KHẤU MÁY CHIẾU 16:9 (CHO GIÁO VIÊN HOST / CHƠI 1 MÁY)
-     ========================================================================== -->
 <div id="stage-wrapper">
   <div id="game-stage">
 
@@ -1113,7 +1119,7 @@
       </div>
     </header>
 
-    <!-- MÀN 1: MÀN CHÀO & CHỌN HÌNH THỨC CHƠI -->
+    <!-- MÀN 1 -->
     <section class="screen active" id="screen-welcome">
       <div class="welcome-badge">✦ CHỦ ĐỀ: BÍ ẨN HAI VIÊN HẠT HOÀNG GIA ✦</div>
       <h1 class="welcome-title">MỞ KHÓA KHO DỤNG CỤ HOÀNG GIA</h1>
@@ -1183,7 +1189,7 @@
       </div>
     </section>
 
-    <!-- MÀN 2: PHÒNG CHỜ ONLINE -->
+    <!-- MÀN 2 -->
     <section class="screen" id="screen-teams">
       <h2 class="section-heading" id="teams-screen-heading">PHÒNG CHỜ BIỆT ĐỘI KHOA HỌC NHÍ</h2>
       <p class="section-subheading" id="teams-screen-sub">Giáo viên có thể đổi tên 4 đội hoặc chờ các đội kết nối qua mã phòng</p>
@@ -1250,7 +1256,7 @@
       </button>
     </section>
 
-    <!-- MÀN 3: CỬA KHO BÁU & 4 Ổ KHÓA -->
+    <!-- MÀN 3 -->
     <section class="screen" id="screen-vault">
       <div class="vault-container">
         <div class="vault-door-seam"></div>
@@ -1267,7 +1273,7 @@
       </div>
     </section>
 
-    <!-- MÀN 4: MÀN CÂU HỎI THẢO LUẬN TRÊN MÁY CHIẾU (KHÔNG HIỆN KHO CHUNG) -->
+    <!-- MÀN 4 -->
     <section class="screen" id="screen-question">
       <div class="question-topbar">
         <div class="q-badge-title">
@@ -1303,7 +1309,7 @@
       </button>
     </section>
 
-    <!-- MÀN 5: PHẢN HỒI VÀ CHẤM ĐIỂM -->
+    <!-- MÀN 5 -->
     <section class="screen" id="screen-feedback">
       <div class="feedback-layout">
         <div class="scroll-parchment answer-reveal-card">
@@ -1344,7 +1350,7 @@
       </button>
     </section>
 
-    <!-- MÀN 6: CHIẾN THẮNG -->
+    <!-- MÀN 6 -->
     <section class="screen" id="screen-victory">
       <h2 class="victory-title">
         🎉 CHÚC MỪNG BIỆT ĐỘI KHOA HỌC NHÍ!<br>
@@ -1424,7 +1430,7 @@
       </button>
     </section>
 
-    <!-- MÀN 7: CHUYỂN GIAO NHIỆM VỤ -->
+    <!-- MÀN 7 -->
     <section class="screen" id="screen-mission">
       <div class="final-standings-bar" id="final-standings-bar"></div>
 
@@ -1468,7 +1474,7 @@
 </div>
 
 <!-- ==========================================================================
-     PHẦN B: GIAO DIỆN ĐIỆN THOẠI HỌC SINH (KHO VẬT PHẨM RIÊNG TỪNG ĐỘI)
+     PHẦN B: GIAO DIỆN ĐIỆN THOẠI HỌC SINH (TỰ ĐỘNG RESPONSIVE TOÀN MÀN HÌNH)
      ========================================================================== -->
 <div id="player-mobile-app">
   <div class="mobile-header">
@@ -1476,7 +1482,6 @@
     <span id="mob-score-badge" style="color: #fde047;">Điểm: 0</span>
   </div>
 
-  <!-- Bước 1: Nhập mã phòng PIN & Chọn đội -->
   <div class="mobile-card" id="mob-step-join">
     <h2 style="color: #991b1b; font-size: 24px; font-weight: 900; margin-bottom: 6px;">VÀO PHÒNG HOÀNG GIA</h2>
     <p style="font-size: 15px; color: #451a03; margin-bottom: 14px; font-weight: 600;">Nhập mã 4 số đang chiếu trên màn hình giáo viên</p>
@@ -1503,7 +1508,6 @@
     </button>
   </div>
 
-  <!-- Bước 2: Màn hình chờ & KHO VẬT PHẨM RIÊNG CỦA ĐỘI TRÊN ĐIỆN THOẠI -->
   <div class="mobile-card" id="mob-step-wait" style="display: none;">
     <div style="font-size: 42px; margin-bottom: 6px;">👑</div>
     <h2 style="color: #15803d; font-size: 22px; font-weight: 900; margin-bottom: 6px;" id="mob-wait-title">KHO BÁU CỦA ĐỘI BẠN</h2>
@@ -1511,7 +1515,6 @@
       Trả lời đúng các câu hỏi thử thách để mở khóa các ổ khoá riêng biệt của đội:
     </p>
 
-    <!-- Kho vật phẩm hiển thị riêng cho học sinh -->
     <div class="mobile-vault-grid" id="mob-vault-container">
       <div class="mob-vault-item" id="mob-v-0">🔒 Ổ khóa 1<br><span style="font-size:10px;">Chưa mở</span></div>
       <div class="mob-vault-item" id="mob-v-1">🔒 Ổ khóa 2<br><span style="font-size:10px;">Chưa mở</span></div>
@@ -1524,7 +1527,6 @@
     </p>
   </div>
 
-  <!-- Bước 3: Màn hình bấm chọn đáp án A/B/C/D (Khóa cứng không cho đổi) -->
   <div class="mobile-card" id="mob-step-question" style="display: none; text-align: left;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
       <span style="background: #991b1b; color: #fde047; padding: 4px 10px; border-radius: 8px; font-weight: 900; font-size:13px;" id="mob-q-num">CÂU 1</span>
@@ -1534,7 +1536,6 @@
     <div class="mobile-options-list" id="mob-options-list"></div>
   </div>
 
-  <!-- Bước 4: Màn hình kết quả câu hỏi trên điện thoại -->
   <div class="mobile-card" id="mob-step-result" style="display: none;">
     <div style="font-size: 44px; margin-bottom: 6px;" id="mob-res-icon">🎉</div>
     <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 8px;" id="mob-res-title">CHÍNH XÁC! +10 ĐIỂM</h2>
@@ -1542,9 +1543,6 @@
   </div>
 </div>
 
-<!-- ==========================================================================
-     PHẦN C: JAVASCRIPT ĐIỀU KHIỂN GAME & KẾT NỐI P2P REAL-TIME
-     ========================================================================== -->
 <script>
   const QUESTIONS_DATA = [
     {
@@ -2189,7 +2187,7 @@
   }
 
   /* ==========================================================================
-     LOGIC ĐIỆN THOẠI HỌC SINH (KHÓA CỨNG ĐÁP ÁN & HIỆN KHO VẬT PHẨM RIÊNG)
+     LOGIC ĐIỆN THOẠI HỌC SINH
      ========================================================================== */
   function openMobilePlayerUI() {
     SoundFX.click();
@@ -2295,7 +2293,6 @@
         const btn = document.createElement("button");
         btn.className = "mobile-opt-btn";
         btn.innerHTML = `<span style="background:#991b1b; color:#fde047; padding:4px 10px; border-radius:8px; font-weight:900;">${opt.key}</span> <span>${opt.text}</span>`;
-        // Khóa cứng ngay lập tức khi bấm, không cho thay đổi
         btn.onclick = () => sendMobileAnswer(data.qIndex, opt.key, btn);
         list.appendChild(btn);
       });
@@ -2310,7 +2307,6 @@
       }
       const isRight = gameState.mobileChosenAnswer === data.correctKey;
       
-      // Nếu đội trả lời đúng, tự động mở khóa ô tương ứng trong kho riêng của đội trên điện thoại
       if (isRight) {
         if (gameState.mobUnlockedCount < 4) {
           const vItem = document.getElementById(`mob-v-${gameState.mobUnlockedCount}`);
@@ -2346,10 +2342,9 @@
   }
 
   function sendMobileAnswer(qIndex, answerKey, btnEl) {
-    if (gameState.mobileChosenAnswer) return; // Chặn không cho đổi đáp án
+    if (gameState.mobileChosenAnswer) return;
     gameState.mobileChosenAnswer = answerKey;
 
-    // Khóa toàn bộ các nút ngay lập tức
     document.querySelectorAll(".mobile-opt-btn").forEach(b => {
       b.disabled = true;
     });
