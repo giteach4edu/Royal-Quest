@@ -809,45 +809,14 @@
 
     .victory-title {
       font-family: 'Playfair Display', serif;
-      font-size: 44px;
+      font-size: 52px;
       font-weight: 900;
       color: var(--gold-light);
       text-align: center;
       text-shadow: 0 4px 0 #450a0a;
-      margin-bottom: 22px;
+      margin-bottom: 16px;
+      line-height: 1.25;
     }
-    .tools-showcase-grid {
-      width: 100%;
-      max-width: 1440px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-bottom: 26px;
-    }
-    .tool-card {
-      background: linear-gradient(180deg, #fffbeb 0%, #f5deb3 100%);
-      border: 5px solid var(--gold-main);
-      border-radius: 24px;
-      padding: 20px 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      color: #291108;
-    }
-    .tool-svg-wrap {
-      width: 165px;
-      height: 165px;
-      background: #ffffff;
-      border: 3px solid #d97706;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 12px;
-    }
-    .tool-name { font-size: 25px; font-weight: 900; color: #991b1b; margin-bottom: 6px; }
-    .tool-desc { font-size: 18px; font-weight: 600; color: #451a03; }
 
     .mission-scroll {
       width: 100%;
@@ -913,7 +882,7 @@
     }
 
     /* ==========================================================================
-       GIAO DIỆN ĐIỆN THOẠI HỌC SINH (ĐÃ SỬA BỐ CỤC DỌC VÀ CÓ THANH CUỘN)
+       GIAO DIỆN ĐIỆN THOẠI HỌC SINH
        ========================================================================== */
     #player-mobile-app {
       display: none;
@@ -1031,11 +1000,13 @@
       align-items: center;
       gap: 10px;
       cursor: pointer;
+      transition: all 0.1s;
     }
     .mobile-opt-btn.chosen {
       background: #1d4ed8;
       color: #ffffff;
       border-color: #93c5fd;
+      transform: scale(1.02);
     }
     .mobile-opt-btn:disabled { opacity: 0.9; cursor: not-allowed; }
 
@@ -1053,27 +1024,32 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.6);
       display: flex;
       flex-direction: column;
+      max-height: 88vh;
     }
     .mobile-victory-grid {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin: 14px 0;
+      margin: 12px 0;
+      overflow-y: auto;
+      flex-grow: 1;
+      padding-right: 4px;
     }
     .mob-card-item {
       background: linear-gradient(180deg, #fffbeb 0%, #f5deb3 100%);
       border: 3px solid var(--gold-main);
       border-radius: 14px;
-      padding: 12px;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
       gap: 14px;
       color: #291108;
       text-align: left;
+      flex-shrink: 0;
     }
     .mob-card-thumb {
-      width: 68px;
-      height: 68px;
+      width: 64px;
+      height: 64px;
       background: #ffffff;
       border: 2px solid #d97706;
       border-radius: 12px;
@@ -1381,7 +1357,7 @@
             </defs>
           </svg>
           <div style="font-size: 27px; font-weight: 900; color: #86efac; margin-top: 12px;" id="fb-lock-title">Ổ KHÓA ĐÃ MỞ!</div>
-          <div style="font-size: 19px; color: #fef3c7; margin-top: 8px; font-weight: 600;">Dụng cụ bí mật đã sẵn sàng lộ diện</div>
+          <div style="font-size: 19px; color: #fef3c7; margin-top: 8px; font-weight: 600;">Dụng cụ bí mật đã tự động chuyển giao về máy học sinh</div>
         </div>
       </div>
 
@@ -1390,83 +1366,19 @@
       </button>
     </section>
 
-    <!-- MÀN 6 -->
+    <!-- MÀN 6 (GIÁO VIÊN): CHỈ HIỆN THÔNG BÁO CHÚC MỪNG HOÀNH TRÁNG, KHÔNG HIỆN THẺ DỤNG CỤ NỮA -->
     <section class="screen" id="screen-victory">
+      <div style="font-size: 80px; margin-bottom: 10px;">👑</div>
       <h2 class="victory-title">
-        🎉 CHÚC MỪNG BIỆT ĐỘI KHOA HỌC NHÍ!<br>
-        KHO DỤNG CỤ HOÀNG GIA ĐÃ ĐƯỢC MỞ!
+        CHÚC MỪNG CÁC BIỆT ĐỘI KHOA HỌC NHÍ!<br>
+        KHO DỤNG CỤ HOÀNG GIA ĐÃ MỞ THÀNH CÔNG!
       </h2>
-
-      <div class="tools-showcase-grid">
-        <div class="tool-card">
-          <div class="tool-svg-wrap">
-            <svg viewBox="0 0 160 160" width="140" height="140">
-              <rect x="28" y="34" width="104" height="12" rx="6" fill="#94a3b8" stroke="#334155" stroke-width="3"/>
-              <rect x="68" y="46" width="24" height="14" fill="#64748b"/>
-              <path d="M18,60 L142,60 L150,132 L10,132 Z" fill="#e2e8f0" stroke="#1e293b" stroke-width="3.5"/>
-              <rect x="36" y="75" width="88" height="28" rx="6" fill="#14532d" stroke="#0f172a" stroke-width="2.5"/>
-              <text x="80" y="95" text-anchor="middle" fill="#4ade80" font-family="monospace" font-size="18" font-weight="900">0.00 g</text>
-              <circle cx="48" cy="116" r="6" fill="#ef4444"/>
-              <circle cx="80" cy="116" r="6" fill="#3b82f6"/>
-              <circle cx="112" cy="116" r="6" fill="#eab308"/>
-            </svg>
-          </div>
-          <div class="tool-name">1. Cân điện tử</div>
-          <div class="tool-desc">Xác định chính xác khối lượng (m) của viên hạt</div>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-svg-wrap">
-            <svg viewBox="0 0 160 160" width="140" height="140">
-              <ellipse cx="80" cy="142" rx="38" ry="9" fill="#93c5fd" stroke="#1d4ed8" stroke-width="3"/>
-              <rect x="58" y="20" width="44" height="122" rx="4" fill="#eff6ff" stroke="#1d4ed8" stroke-width="3.5"/>
-              <line x1="60" y1="40" x2="78" y2="40" stroke="#1e3a8a" stroke-width="2.5"/>
-              <line x1="60" y1="60" x2="72" y2="60" stroke="#1e3a8a" stroke-width="2"/>
-              <line x1="60" y1="80" x2="78" y2="80" stroke="#1e3a8a" stroke-width="2.5"/>
-              <line x1="60" y1="100" x2="72" y2="100" stroke="#1e3a8a" stroke-width="2"/>
-              <line x1="60" y1="120" x2="78" y2="120" stroke="#1e3a8a" stroke-width="2.5"/>
-              <text x="95" y="44" font-size="11" font-weight="800" fill="#1e3a8a">50</text>
-              <text x="95" y="84" font-size="11" font-weight="800" fill="#1e3a8a">30</text>
-              <text x="95" y="124" font-size="11" font-weight="800" fill="#1e3a8a">10</text>
-            </svg>
-          </div>
-          <div class="tool-name">2. Ống đong</div>
-          <div class="tool-desc">Đo thể tích chất lỏng theo vạch chia mL (cm³)</div>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-svg-wrap">
-            <svg viewBox="0 0 160 160" width="140" height="140">
-              <path d="M35,32 L43,136 Q44,144 52,144 L108,144 Q116,144 117,136 L125,32" fill="#f8fafc" stroke="#0284c7" stroke-width="4"/>
-              <path d="M39,72 Q60,64 80,72 T121,72 L116,136 Q115,142 108,142 L52,142 Q45,142 44,136 Z" fill="#38bdf8" opacity="0.85"/>
-              <circle cx="65" cy="110" r="5" fill="#e0f2fe"/>
-              <circle cx="92" cy="95" r="7" fill="#e0f2fe"/>
-              <circle cx="78" cy="125" r="4" fill="#e0f2fe"/>
-            </svg>
-          </div>
-          <div class="tool-name">3. Nước</div>
-          <div class="tool-desc">Dùng trong phương pháp bình chia độ dâng nước</div>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-svg-wrap">
-            <svg viewBox="0 0 160 160" width="140" height="140">
-              <rect x="42" y="34" width="76" height="14" rx="5" fill="#b45309" stroke="#451a03" stroke-width="3"/>
-              <rect x="42" y="112" width="76" height="14" rx="5" fill="#b45309" stroke="#451a03" stroke-width="3"/>
-              <rect x="52" y="48" width="56" height="64" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5"/>
-              <line x1="52" y1="62" x2="108" y2="62" stroke="#eab308" stroke-width="2"/>
-              <line x1="52" y1="78" x2="108" y2="78" stroke="#eab308" stroke-width="2"/>
-              <line x1="52" y1="94" x2="108" y2="94" stroke="#eab308" stroke-width="2"/>
-              <path d="M108,85 Q138,85 135,115 T145,145" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="tool-name">4. Sợi chỉ mảnh</div>
-          <div class="tool-desc">Buộc và hạ nhẹ nhàng viên hạt ngập vào trong nước</div>
-        </div>
-      </div>
+      <p style="font-size: 24px; color: #fef3c7; margin-bottom: 40px; font-weight: 700; text-align: center;">
+        Toàn bộ dụng cụ khoa học đã được tự động mở khóa trên điện thoại của từng nhóm!
+      </p>
 
       <button class="royal-cta-btn" onclick="goToMissionScreen()">
-        📜 NHIỆM VỤ TIẾP THEO
+        📜 TIẾP TỤC: THẢO LUẬN PHƯƠNG ÁN
       </button>
     </section>
 
@@ -1570,7 +1482,7 @@
   <div class="mobile-card" id="mob-step-question" style="display: none; text-align: left;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
       <span style="background: #991b1b; color: #fde047; padding: 4px 10px; border-radius: 8px; font-weight: 900; font-size:12px;" id="mob-q-num">CÂU 1</span>
-      <span style="font-weight: 900; color: #dc2626; font-size:12px;" id="mob-q-status">Hãy chọn đáp án!</span>
+      <span style="font-weight: 900; color: #15803d; font-size:12px;" id="mob-q-status">Có thể đổi đáp án thoải mái!</span>
     </div>
     <div style="font-size: 16px; font-weight: 800; line-height: 1.35; margin-bottom: 10px;" id="mob-q-text"></div>
     <div class="mobile-options-list" id="mob-options-list"></div>
@@ -1582,18 +1494,18 @@
     <p style="font-size: 13px; line-height: 1.4; font-weight: 700; color: #291108;" id="mob-res-desc"></p>
   </div>
 
-  <!-- Màn hình Victory lộng lẫy chuẩn giao diện mobile dọc, kéo xuống được -->
+  <!-- Màn hình Victory lộng lẫy chuẩn giao diện mobile dọc, kéo xuống được, hiển thị đúng số dụng cụ mở khóa -->
   <div class="mobile-victory-container" id="mob-step-victory" style="display: none;">
     <div style="font-size: 18px; font-weight: 900; color: #fde047; margin-bottom: 4px; font-family: 'Playfair Display', serif;">
       🎉 CHÚC MỪNG BIỆT ĐỘI KHOA HỌC NHÍ!<br>KHO DỤNG CỤ ĐÃ ĐƯỢC MỞ!
     </div>
-    <div style="font-size: 13px; font-weight: 700; color: #fef3c7; margin-bottom: 6px;">
-      Các dụng cụ hoàng gia đã mở khóa thành công:
+    <div style="font-size: 13px; font-weight: 700; color: #fef3c7; margin-bottom: 6px;" id="mob-victory-subtitle">
+      Các dụng cụ hoàng gia đội bạn đã mở khóa thành công:
     </div>
 
     <div class="mobile-victory-grid" id="mob-victory-tools-list"></div>
 
-    <button class="royal-cta-btn green-btn" style="width: 100%; justify-content: center; font-size: 15px; padding: 12px; margin-top: 6px;" onclick="alert('Đã sẵn sàng bước vào vòng thảo luận nhóm với giáo viên!')">
+    <button class="royal-cta-btn green-btn" style="width: 100%; justify-content: center; font-size: 15px; padding: 12px; margin-top: 6px; flex-shrink: 0;" onclick="alert('Đã sẵn sàng bước vào vòng thảo luận nhóm với giáo viên!')">
       📜 ĐÃ HOÀN THÀNH NHIỆM VỤ
     </button>
   </div>
@@ -1680,6 +1592,7 @@
     selectedMobileTeamIdx: 0,
     mobileChosenAnswer: null,
     mobUnlockedCount: 0,
+    teamUnlockedCounts: [0, 0, 0, 0], // Theo dõi số câu đúng của từng đội
 
     currentScreen: "screen-welcome",
     history: [],
@@ -1865,7 +1778,7 @@
         const pill = document.getElementById(`sub-pill-${teamIndex}`);
         if (pill) {
           pill.classList.add("submitted");
-          pill.textContent = `${gameState.teams[teamIndex].name}: ✔ Đã chốt đáp án`;
+          pill.textContent = `${gameState.teams[teamIndex].name}: ✔ Đã chọn ${answerKey} (Có thể đổi)`;
         }
         SoundFX.click();
       }
@@ -1912,7 +1825,11 @@
     } else if (targetId === "screen-victory") {
       SoundFX.victory();
       startConfetti();
-      broadcastToPlayers({ type: "STATE_VICTORY", teams: gameState.teams, unlockedCount: gameState.unlockedLocks.filter(Boolean).length });
+      // Gửi tín hiệu victory kèm số lượng dụng cụ riêng theo từng đội
+      gameState.teams.forEach((t, i) => {
+        const conn = gameState.hostConnections[i]; // Hoặc broadcast chung
+      });
+      broadcastToPlayers({ type: "STATE_VICTORY", teamUnlockedCounts: gameState.teamUnlockedCounts });
     } else if (targetId === "screen-mission") {
       stopConfetti();
       renderFinalStandings();
@@ -1952,6 +1869,7 @@
       if (inp) inp.value = t.name;
     });
     gameState.unlockedLocks = [false, false, false, false];
+    gameState.teamUnlockedCounts = [0, 0, 0, 0];
     gameState.awardedPerQuestion = Array.from({ length: 4 }, () => [false, false, false, false]);
     gameState.submittedAnswers = Array.from({ length: 4 }, () => [null, null, null, null]);
     updateScoreboardUI();
@@ -2030,7 +1948,7 @@
         const ans = gameState.submittedAnswers[qIndex][i];
         pill.className = `sub-pill ${ans ? "submitted" : ""}`;
         pill.textContent = ans
-          ? `${gameState.teams[i].name}: ✔ Đã chốt đáp án`
+          ? `${gameState.teams[i].name}: ✔ Đã chọn ${ans}`
           : `${gameState.teams[i].name}: ${gameState.teams[i].connected ? "Đang chọn..." : "Chưa vào phòng"}`;
       }
     } else {
@@ -2124,6 +2042,7 @@
         if (chosen === qData.correctKey && !gameState.awardedPerQuestion[qIndex][i]) {
           gameState.awardedPerQuestion[qIndex][i] = true;
           gameState.teams[i].score += 10;
+          gameState.teamUnlockedCounts[i]++; // Tăng số lượng dụng cụ mở khóa cho đội này
         }
       }
     }
@@ -2148,7 +2067,8 @@
       correctKey: qData.correctKey,
       explanation: qData.explanation,
       teams: gameState.teams,
-      unlockedCount: gameState.unlockedLocks.filter(Boolean).length
+      unlockedCount: gameState.unlockedLocks.filter(Boolean).length,
+      teamUnlockedCounts: gameState.teamUnlockedCounts
     });
   }
 
@@ -2180,15 +2100,17 @@
     if (!currentlyAwarded) {
       gameState.awardedPerQuestion[qIndex][teamIdx] = true;
       gameState.teams[teamIdx].score += 10;
+      gameState.teamUnlockedCounts[teamIdx] = Math.min(4, gameState.teamUnlockedCounts[teamIdx] + 1);
       SoundFX.point();
     } else {
       gameState.awardedPerQuestion[qIndex][teamIdx] = false;
       gameState.teams[teamIdx].score = Math.max(0, gameState.teams[teamIdx].score - 10);
+      gameState.teamUnlockedCounts[teamIdx] = Math.max(0, gameState.teamUnlockedCounts[teamIdx] - 1);
       SoundFX.click();
     }
     updateScoreboardUI();
     renderAwardButtons(qIndex);
-    broadcastToPlayers({ type: "SCORE_UPDATE", teams: gameState.teams });
+    broadcastToPlayers({ type: "SCORE_UPDATE", teams: gameState.teams, teamUnlockedCounts: gameState.teamUnlockedCounts });
   }
 
   function continueFromFeedback() {
@@ -2256,7 +2178,7 @@
   }
 
   /* ==========================================================================
-     LOGIC ĐIỆN THOẠI HỌC SINH
+     LOGIC ĐIỆN THOẠI HỌC SINH (CHO PHÉP ĐỔI ĐÁP ÁN THOẢI MÁI)
      ========================================================================== */
   function openMobilePlayerUI() {
     SoundFX.click();
@@ -2353,7 +2275,7 @@
       gameState.mobileChosenAnswer = null;
       const q = data.questionData;
       document.getElementById("mob-q-num").textContent = `CÂU ${data.qIndex + 1} / 4`;
-      document.getElementById("mob-q-status").textContent = "Hãy chọn đáp án!";
+      document.getElementById("mob-q-status").textContent = "Bạn có thể đổi đáp án tùy ý trước khi hết giờ!";
       document.getElementById("mob-q-text").textContent = q.question;
 
       const list = document.getElementById("mob-options-list");
@@ -2362,27 +2284,29 @@
         const btn = document.createElement("button");
         btn.className = "mobile-opt-btn";
         btn.innerHTML = `<span style="background:#991b1b; color:#fde047; padding:4px 10px; border-radius:8px; font-weight:900;">${opt.key}</span> <span>${opt.text}</span>`;
+        // Cho phép bấm đổi đáp án liên tục (không bị vô hiệu hóa nút)
         btn.onclick = () => sendMobileAnswer(data.qIndex, opt.key, btn);
         list.appendChild(btn);
       });
       showMobileStep("mob-step-question");
     } else if (data.type === "TIME_UP") {
       document.querySelectorAll(".mobile-opt-btn").forEach(b => (b.disabled = true));
-      document.getElementById("mob-q-status").textContent = "⏰ ĐÃ HẾT GIỜ!";
+      document.getElementById("mob-q-status").textContent = "⏰ ĐÃ HẾT GIỜ (Đã khóa đáp án cuối)";
     } else if (data.type === "STATE_RESULT") {
       const myTeam = data.teams[gameState.selectedMobileTeamIdx];
       if (myTeam) {
         document.getElementById("mob-score-badge").textContent = `Điểm: ${myTeam.score}`;
       }
       
-      const unlockedCount = data.unlockedCount || 0;
-      gameState.mobUnlockedCount = unlockedCount;
+      const counts = data.teamUnlockedCounts || [0,0,0,0];
+      const myUnlockedCount = counts[gameState.selectedMobileTeamIdx] || 0;
+      gameState.mobUnlockedCount = myUnlockedCount;
 
       for (let i = 0; i < 4; i++) {
         const vItem = document.getElementById(`mob-v-${i}`);
-        if (i < unlockedCount) {
+        if (i < myUnlockedCount) {
           vItem.classList.add("unlocked");
-          vItem.innerHTML = `🔓 Khóa ${i + 1}<br><span style="font-size:10px;">Đã mở</span>`;
+          vItem.innerHTML = `🔓 Khóa ${i + 1}<br><span style="font-size:10px;">Đã mở dụng cụ</span>`;
         } else {
           vItem.classList.remove("unlocked");
           vItem.innerHTML = `🔒 Ổ khóa ${i + 1}<br><span style="font-size:10px;">Chưa mở</span>`;
@@ -2394,7 +2318,7 @@
       document.getElementById("mob-res-title").textContent = isRight
         ? "CHÍNH XÁC! +10 ĐIỂM"
         : `ĐÁP ÁN ĐÚNG LÀ ${data.correctKey}`;
-      document.getElementById("mob-res-title").style.color = isRight ? "#15803d" : "#991b1b";
+      document.getElementById("mob-res-titlestyle" in document.body ? "" : "").color = isRight ? "#15803d" : "#991b1b";
       document.getElementById("mob-res-desc").textContent = data.explanation;
       showMobileStep("mob-step-result");
     } else if (data.type === "SCORE_UPDATE") {
@@ -2402,28 +2326,37 @@
       if (myTeam) {
         document.getElementById("mob-score-badge").textContent = `Điểm: ${myTeam.score}`;
       }
+      const counts = data.teamUnlockedCounts || [0,0,0,0];
+      gameState.mobUnlockedCount = counts[gameState.selectedMobileTeamIdx] || 0;
     } else if (data.type === "STATE_VICTORY") {
       const myTeam = data.teams[gameState.selectedMobileTeamIdx];
       if (myTeam) {
         document.getElementById("mob-score-badge").textContent = `Điểm: ${myTeam.score}`;
       }
       
+      const counts = data.teamUnlockedCounts || [0,0,0,0];
+      const myCount = counts[gameState.selectedMobileTeamIdx] ?? 4;
+
       const listContainer = document.getElementById("mob-victory-tools-list");
       listContainer.innerHTML = "";
-      const count = data.unlockedCount || 4;
 
-      for (let i = 0; i < count; i++) {
-        const tool = QUESTIONS_DATA[i];
-        const card = document.createElement("div");
-        card.className = "mob-card-item";
-        card.innerHTML = `
-          <div class="mob-card-thumb">${tool.svgHtml}</div>
-          <div>
-            <div style="font-size: 16px; font-weight: 900; color: #991b1b; margin-bottom: 4px;">${tool.toolName}</div>
-            <div style="font-size: 13px; font-weight: 700; color: #451a03; line-height: 1.35;">${tool.toolDesc}</div>
-          </div>
-        `;
-        listContainer.appendChild(card);
+      if (myCount === 0) {
+        document.getElementById("mob-victory-subtitle").textContent = "Đội bạn chưa mở khóa được dụng cụ nào trong các thử thách vừa qua.";
+      } else {
+        document.getElementById("mob-victory-subtitle").textContent = `Đội bạn đã xuất sắc mở khóa được ${myCount}/4 dụng cụ hoàng gia:`;
+        for (let i = 0; i < myCount; i++) {
+          const tool = QUESTIONS_DATA[i];
+          const card = document.createElement("div");
+          card.className = "mob-card-item";
+          card.innerHTML = `
+            <div class="mob-card-thumb">${tool.svgHtml}</div>
+            <div>
+              <div style="font-size: 15px; font-weight: 900; color: #991b1b; margin-bottom: 2px;">${tool.toolName}</div>
+              <div style="font-size: 12px; font-weight: 700; color: #451a03; line-height: 1.3;">${tool.toolDesc}</div>
+            </div>
+          `;
+          listContainer.appendChild(card);
+        }
       }
 
       showMobileStep("mob-step-victory");
@@ -2431,14 +2364,14 @@
   }
 
   function sendMobileAnswer(qIndex, answerKey, btnEl) {
-    if (gameState.mobileChosenAnswer) return;
     gameState.mobileChosenAnswer = answerKey;
 
+    // Đổi màu trực quan giao diện chọn của học sinh để biết đang chọn nút nào, cho phép bấm đổi sang nút khác
     document.querySelectorAll(".mobile-opt-btn").forEach(b => {
-      b.disabled = true;
+      b.classList.remove("chosen");
     });
     btnEl.classList.add("chosen");
-    document.getElementById("mob-q-status").textContent = `✔ Đã chốt đáp án ${answerKey} (Đã khóa)`;
+    document.getElementById("mob-q-status").textContent = `✔ Đã chọn ${answerKey} (Vẫn có thể đổi ý trước khi hết giờ!)`;
 
     if (gameState.playerConn && gameState.playerConn.open) {
       gameState.playerConn.send({
