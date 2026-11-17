@@ -913,7 +913,7 @@
     }
 
     /* ==========================================================================
-       GIAO DIỆN ĐIỆN THOẠI HỌC SINH (RESPONSIVE FULL MÀN HÌNH DI ĐỘNG)
+       GIAO DIỆN ĐIỆN THOẠI HỌC SINH (SỬA LỖI UI MÀN HÌNH DỌC)
        ========================================================================== */
     #player-mobile-app {
       display: none;
@@ -923,7 +923,7 @@
       background: radial-gradient(circle at top, #8b1118 0%, #3b0508 100%);
       color: #fffbeb;
       flex-direction: column;
-      padding: 16px;
+      padding: 12px;
       overflow-y: auto;
     }
     #player-mobile-app.active { display: flex; }
@@ -936,7 +936,7 @@
       border: 2px solid var(--gold-main);
       border-radius: 12px;
       padding: 10px 14px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       font-weight: 800;
       font-size: 15px;
       flex-shrink: 0;
@@ -947,7 +947,7 @@
       color: #291108;
       border: 4px solid var(--gold-main);
       border-radius: 20px;
-      padding: 20px 16px;
+      padding: 16px 14px;
       text-align: center;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
       margin: auto;
@@ -957,13 +957,13 @@
 
     .mobile-input {
       width: 100%;
-      padding: 12px;
-      font-size: 20px;
+      padding: 10px;
+      font-size: 18px;
       font-weight: 900;
       text-align: center;
       border: 3px solid #b45309;
       border-radius: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       background: #ffffff;
       color: #291108;
     }
@@ -972,11 +972,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .team-pick-btn {
-      padding: 12px;
-      font-size: 18px;
+      padding: 10px;
+      font-size: 16px;
       font-weight: 900;
       border-radius: 12px;
       border: 3px solid #b45309;
@@ -993,14 +993,14 @@
     .mobile-vault-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin: 14px 0;
+      gap: 8px;
+      margin: 12px 0;
     }
     .mob-vault-item {
       background: rgba(40, 10, 10, 0.9);
       border: 2px dashed #b45309;
-      border-radius: 12px;
-      padding: 12px 8px;
+      border-radius: 10px;
+      padding: 10px 6px;
       text-align: center;
       font-size: 13px;
       color: #fde68a;
@@ -1015,21 +1015,21 @@
     .mobile-options-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-top: 14px;
+      gap: 10px;
+      margin-top: 10px;
     }
     .mobile-opt-btn {
       background: #fffbeb;
       border: 3px solid #b45309;
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 18px;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 16px;
       font-weight: 800;
       color: #291108;
       text-align: left;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       cursor: pointer;
     }
     .mobile-opt-btn.chosen {
@@ -1037,9 +1037,9 @@
       color: #ffffff;
       border-color: #93c5fd;
     }
-    .mobile-opt-btn:disabled { opacity: 0.8; cursor: not-allowed; }
+    .mobile-opt-btn:disabled { opacity: 0.9; cursor: not-allowed; }
 
-    /* Màn hình kết quả tổng kết lộng lẫy trên điện thoại */
+    /* Màn hình kết quả tổng kết lộng lẫy trên điện thoại - Sửa chuẩn hiển thị danh sách dọc */
     .mobile-victory-container {
       background: radial-gradient(circle at 50% 35%, #9e151d 0%, #5e090e 65%, #380407 100%);
       border: 4px solid var(--gold-main);
@@ -1047,23 +1047,24 @@
       padding: 16px;
       color: #fffbeb;
       text-align: center;
-      max-width: 500px;
+      width: 100%;
+      max-width: 480px;
       margin: auto;
       box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     }
     .mobile-victory-grid {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin: 14px 0;
-      max-height: 400px;
+      gap: 10px;
+      margin: 12px 0;
+      max-height: 420px;
       overflow-y: auto;
     }
     .mob-card-item {
       background: linear-gradient(180deg, #fffbeb 0%, #f5deb3 100%);
       border: 3px solid var(--gold-main);
-      border-radius: 16px;
-      padding: 12px;
+      border-radius: 14px;
+      padding: 10px 12px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -1071,15 +1072,16 @@
       text-align: left;
     }
     .mob-card-thumb {
-      width: 54px;
-      height: 54px;
+      width: 50px;
+      height: 50px;
       background: #ffffff;
       border: 2px solid #d97706;
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      font-size: 24px;
     }
 
     @media (max-width: 1620px) {
@@ -1522,12 +1524,12 @@
   </div>
 
   <div class="mobile-card" id="mob-step-join">
-    <h2 style="color: #991b1b; font-size: 24px; font-weight: 900; margin-bottom: 6px;">VÀO PHÒNG HOÀNG GIA</h2>
-    <p style="font-size: 15px; color: #451a03; margin-bottom: 14px; font-weight: 600;">Nhập mã 4 số đang chiếu trên màn hình giáo viên</p>
+    <h2 style="color: #991b1b; font-size: 22px; font-weight: 900; margin-bottom: 6px;">VÀO PHÒNG HOÀNG GIA</h2>
+    <p style="font-size: 14px; color: #451a03; margin-bottom: 12px; font-weight: 600;">Nhập mã 4 số đang chiếu trên máy chiếu giáo viên</p>
 
     <input type="tel" maxlength="4" class="mobile-input" id="mob-input-pin" placeholder="MÃ PHÒNG (VD: 4829)" />
 
-    <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px; text-align: left;">Chọn đội của bạn:</div>
+    <div style="font-size: 14px; font-weight: 800; margin-bottom: 6px; text-align: left;">Chọn đội của bạn:</div>
     <div class="team-select-grid">
       <button class="team-pick-btn active" onclick="selectMobileTeam(0, this)">Đội A</button>
       <button class="team-pick-btn" onclick="selectMobileTeam(1, this)">Đội B</button>
@@ -1535,22 +1537,22 @@
       <button class="team-pick-btn" onclick="selectMobileTeam(3, this)">Đội D</button>
     </div>
 
-    <input type="text" maxlength="16" class="mobile-input" id="mob-input-name" value="Đội A" placeholder="Tên nhóm (tùy chỉnh)" style="font-size: 17px; padding: 10px;" />
+    <input type="text" maxlength="16" class="mobile-input" id="mob-input-name" value="Đội A" placeholder="Tên nhóm (tùy chỉnh)" style="font-size: 16px; padding: 8px;" />
 
-    <div id="mob-join-msg" style="color: #dc2626; font-weight: 800; font-size: 14px; margin-bottom: 10px;"></div>
+    <div id="mob-join-msg" style="color: #dc2626; font-weight: 800; font-size: 13px; margin-bottom: 8px;"></div>
 
-    <button class="royal-cta-btn green-btn" style="width: 100%; justify-content: center; font-size: 18px; padding: 12px;" onclick="connectMobileToHost()">
+    <button class="royal-cta-btn green-btn" style="width: 100%; justify-content: center; font-size: 17px; padding: 10px;" onclick="connectMobileToHost()">
       ⚔️ KẾT NỐI VÀO PHÒNG
     </button>
-    <button style="margin-top: 12px; background: none; border: none; color: #78350f; font-weight: 800; text-decoration: underline; cursor: pointer;" onclick="exitMobileMode()">
+    <button style="margin-top: 10px; background: none; border: none; color: #78350f; font-weight: 800; text-decoration: underline; cursor: pointer;" onclick="exitMobileMode()">
       ⬅ Quay lại màn hình chính
     </button>
   </div>
 
   <div class="mobile-card" id="mob-step-wait" style="display: none;">
-    <div style="font-size: 42px; margin-bottom: 6px;">👑</div>
-    <h2 style="color: #15803d; font-size: 22px; font-weight: 900; margin-bottom: 6px;" id="mob-wait-title">KHO BÁU CỦA ĐỘI BẠN</h2>
-    <p style="font-size: 14px; font-weight: 600; color: #451a03; margin-bottom: 10px;" id="mob-wait-subtitle">
+    <div style="font-size: 38px; margin-bottom: 4px;">👑</div>
+    <h2 style="color: #15803d; font-size: 20px; font-weight: 900; margin-bottom: 4px;" id="mob-wait-title">KHO BÁU CỦA ĐỘI BẠN</h2>
+    <p style="font-size: 13px; font-weight: 600; color: #451a03; margin-bottom: 8px;" id="mob-wait-subtitle">
       Trả lời đúng các câu hỏi thử thách để mở khóa các ổ khoá riêng biệt của đội:
     </p>
 
@@ -1561,38 +1563,38 @@
       <div class="mob-vault-item" id="mob-v-3">🔒 Ổ khóa 4<br><span style="font-size:10px;">Chưa mở</span></div>
     </div>
 
-    <p style="font-size: 14px; line-height: 1.4; font-weight: 700; color: #291108; margin-top: 8px;" id="mob-wait-desc">
+    <p style="font-size: 13px; line-height: 1.4; font-weight: 700; color: #291108; margin-top: 6px;" id="mob-wait-desc">
       Đang chờ Giáo viên mở câu hỏi tiếp theo trên máy chiếu...
     </p>
   </div>
 
   <div class="mobile-card" id="mob-step-question" style="display: none; text-align: left;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-      <span style="background: #991b1b; color: #fde047; padding: 4px 10px; border-radius: 8px; font-weight: 900; font-size:13px;" id="mob-q-num">CÂU 1</span>
-      <span style="font-weight: 900; color: #dc2626; font-size:13px;" id="mob-q-status">Hãy chọn đáp án!</span>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+      <span style="background: #991b1b; color: #fde047; padding: 4px 10px; border-radius: 8px; font-weight: 900; font-size:12px;" id="mob-q-num">CÂU 1</span>
+      <span style="font-weight: 900; color: #dc2626; font-size:12px;" id="mob-q-status">Hãy chọn đáp án!</span>
     </div>
-    <div style="font-size: 17px; font-weight: 800; line-height: 1.35; margin-bottom: 12px;" id="mob-q-text"></div>
+    <div style="font-size: 16px; font-weight: 800; line-height: 1.35; margin-bottom: 10px;" id="mob-q-text"></div>
     <div class="mobile-options-list" id="mob-options-list"></div>
   </div>
 
   <div class="mobile-card" id="mob-step-result" style="display: none;">
-    <div style="font-size: 44px; margin-bottom: 6px;" id="mob-res-icon">🎉</div>
-    <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 8px;" id="mob-res-title">CHÍNH XÁC! +10 ĐIỂM</h2>
-    <p style="font-size: 14px; line-height: 1.4; font-weight: 700; color: #291108;" id="mob-res-desc"></p>
+    <div style="font-size: 40px; margin-bottom: 4px;" id="mob-res-icon">🎉</div>
+    <h2 style="font-size: 20px; font-weight: 900; margin-bottom: 6px;" id="mob-res-title">CHÍNH XÁC! +10 ĐIỂM</h2>
+    <p style="font-size: 13px; line-height: 1.4; font-weight: 700; color: #291108;" id="mob-res-desc"></p>
   </div>
 
-  <!-- Giao diện Victory lộng lẫy đồng bộ trên điện thoại học sinh -->
+  <!-- Màn hình Victory lộng lẫy chuẩn giao diện mobile dọc -->
   <div class="mobile-victory-container" id="mob-step-victory" style="display: none;">
-    <div style="font-size: 20px; font-weight: 900; color: #fde047; margin-bottom: 6px; font-family: 'Playfair Display', serif;">
+    <div style="font-size: 18px; font-weight: 900; color: #fde047; margin-bottom: 4px; font-family: 'Playfair Display', serif;">
       🎉 CHÚC MỪNG BIỆT ĐỘI KHOA HỌC NHÍ!<br>KHO DỤNG CỤ ĐÃ ĐƯỢC MỞ!
     </div>
-    <div style="font-size: 13px; font-weight: 700; color: #fef3c7; margin-bottom: 10px;">
+    <div style="font-size: 12px; font-weight: 700; color: #fef3c7; margin-bottom: 8px;">
       Các dụng cụ hoàng gia đã mở khóa thành công:
     </div>
 
     <div class="mobile-victory-grid" id="mob-victory-tools-list"></div>
 
-    <button class="royal-cta-btn green-btn" style="width: 100%; justify-content: center; font-size: 15px; padding: 10px; margin-top: 10px;" onclick="alert('Đã sẵn sàng bước vào vòng thảo luận nhóm với giáo viên!')">
+    <button class="royal-cta-btn green-btn" style="width: 100%; justify-content: center; font-size: 14px; padding: 10px; margin-top: 6px;" onclick="alert('Đã sẵn sàng bước vào vòng thảo luận nhóm với giáo viên!')">
       📜 ĐÃ HOÀN THÀNH NHIỆM VỤ
     </button>
   </div>
@@ -2403,7 +2405,7 @@
         document.getElementById("mob-score-badge").textContent = `Điểm: ${myTeam.score}`;
       }
       
-      // Hiển thị màn hình Victory lộng lẫy và chuẩn số lượng dụng cụ đúng theo số ổ khóa đã mở
+      // Hiển thị màn hình Victory cân đối, chuẩn danh sách dọc trên mobile và đúng số dụng cụ theo số câu đúng
       const listContainer = document.getElementById("mob-victory-tools-list");
       listContainer.innerHTML = "";
       const count = data.unlockedCount || 4;
@@ -2415,8 +2417,8 @@
         card.innerHTML = `
           <div class="mob-card-thumb">⚖️</div>
           <div>
-            <div style="font-size: 15px; font-weight: 900; color: #991b1b;">${tool.toolName}</div>
-            <div style="font-size: 12px; font-weight: 700; color: #451a03;">${tool.toolDesc}</div>
+            <div style="font-size: 14px; font-weight: 900; color: #991b1b;">${tool.toolName}</div>
+            <div style="font-size: 11px; font-weight: 700; color: #451a03;">${tool.toolDesc}</div>
           </div>
         `;
         listContainer.appendChild(card);
