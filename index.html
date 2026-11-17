@@ -1494,7 +1494,7 @@
     <p style="font-size: 13px; line-height: 1.4; font-weight: 700; color: #291108;" id="mob-res-desc"></p>
   </div>
 
-  <!-- Màn hình Victory lộng lẫy chuẩn giao diện mobile dọc, kéo xuống được, hiển thị đúng số dụng cụ mở khóa -->
+  <!-- Màn hình Victory trên điện thoại: Xếp dọc, kéo xuống được, hiển thị đầy đủ dụng cụ đã mở -->
   <div class="mobile-victory-container" id="mob-step-victory" style="display: none;">
     <div style="font-size: 18px; font-weight: 900; color: #fde047; margin-bottom: 4px; font-family: 'Playfair Display', serif;">
       🎉 CHÚC MỪNG BIỆT ĐỘI KHOA HỌC NHÍ!<br>KHO DỤNG CỤ ĐÃ ĐƯỢC MỞ!
@@ -1825,6 +1825,7 @@
     } else if (targetId === "screen-victory") {
       SoundFX.victory();
       startConfetti();
+      // Gửi tín hiệu sang điện thoại học sinh để hiển thị màn hình chúc mừng và các dụng cụ đã mở
       broadcastToPlayers({ type: "STATE_VICTORY", teamUnlockedCounts: gameState.teamUnlockedCounts });
     } else if (targetId === "screen-mission") {
       stopConfetti();
@@ -2324,11 +2325,6 @@
       const counts = data.teamUnlockedCounts || [0,0,0,0];
       gameState.mobUnlockedCount = counts[gameState.selectedMobileTeamIdx] || 0;
     } else if (data.type === "STATE_VICTORY") {
-      const myTeam = data.teams[gameState.selectedMobileTeamIdx];
-      if (myTeam) {
-        document.getElementById("mob-score-badge").textContent = `Điểm: ${myTeam.score}`;
-      }
-      
       const counts = data.teamUnlockedCounts || [0,0,0,0];
       const myCount = counts[gameState.selectedMobileTeamIdx] ?? 4;
 
@@ -2354,6 +2350,7 @@
         }
       }
 
+      // TỰ ĐỘNG CHUYỂN ĐIỆN THOẠI HỌC SINH SANG MÀN HÌNH CHÚC MỪNG VÀ HIỆN DỤNG CỤ
       showMobileStep("mob-step-victory");
     }
   }
