@@ -46,9 +46,6 @@
       overflow-x: hidden;
     }
 
-    /* ==========================================================================
-       CHẾ ĐỘ RESPONSIVE CHO MÁY TÍNH / MÁY CHIẾU & ĐIỆN THOẠI
-       ========================================================================== */
     #stage-wrapper {
       width: 100vw;
       min-height: 100vh;
@@ -916,7 +913,7 @@
     }
 
     /* ==========================================================================
-       GIAO DIỆN ĐIỆN THOẠI HỌC SINH (TỰ ĐỘNG FULL MÀN HÌNH DI ĐỘNG, CÓ CUỘN)
+       GIAO DIỆN ĐIỆN THOẠI HỌC SINH (RESPONSIVE FULL MÀN HÌNH DI ĐỘNG)
        ========================================================================== */
     #player-mobile-app {
       display: none;
@@ -1042,7 +1039,38 @@
     }
     .mobile-opt-btn:disabled { opacity: 0.8; cursor: not-allowed; }
 
-    /* Media query hỗ trợ tự động scale mượt trên mọi màn hình di động */
+    /* Màn hình kết quả cuối trên điện thoại giống máy chiếu */
+    .mobile-tools-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 12px 0;
+      max-height: 380px;
+      overflow-y: auto;
+      text-align: left;
+    }
+    .mob-tool-card {
+      background: #fffbeb;
+      border: 3px solid var(--gold-main);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #291108;
+    }
+    .mob-tool-thumb {
+      width: 50px;
+      height: 50px;
+      background: #ffffff;
+      border: 2px solid #d97706;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
     @media (max-width: 1620px) {
       #stage-wrapper {
         align-items: flex-start;
@@ -1474,7 +1502,7 @@
 </div>
 
 <!-- ==========================================================================
-     PHẦN B: GIAO DIỆN ĐIỆN THOẠI HỌC SINH (TỰ ĐỘNG RESPONSIVE TOÀN MÀN HÌNH)
+     PHẦN B: GIAO DIỆN ĐIỆN THOẠI HỌC SINH
      ========================================================================== -->
 <div id="player-mobile-app">
   <div class="mobile-header">
@@ -1511,7 +1539,7 @@
   <div class="mobile-card" id="mob-step-wait" style="display: none;">
     <div style="font-size: 42px; margin-bottom: 6px;">👑</div>
     <h2 style="color: #15803d; font-size: 22px; font-weight: 900; margin-bottom: 6px;" id="mob-wait-title">KHO BÁU CỦA ĐỘI BẠN</h2>
-    <p style="font-size: 14px; font-weight: 600; color: #451a03; margin-bottom: 10px;">
+    <p style="font-size: 14px; font-weight: 600; color: #451a03; margin-bottom: 10px;" id="mob-wait-subtitle">
       Trả lời đúng các câu hỏi thử thách để mở khóa các ổ khoá riêng biệt của đội:
     </p>
 
@@ -1521,6 +1549,9 @@
       <div class="mob-vault-item" id="mob-v-2">🔒 Ổ khóa 3<br><span style="font-size:10px;">Chưa mở</span></div>
       <div class="mob-vault-item" id="mob-v-3">🔒 Ổ khóa 4<br><span style="font-size:10px;">Chưa mở</span></div>
     </div>
+
+    <!-- Danh sách dụng cụ hiển thị tự động theo số câu khi mở kho báu thành công -->
+    <div class="mobile-tools-showcase" id="mob-tools-showcase" style="display: none;"></div>
 
     <p style="font-size: 14px; line-height: 1.4; font-weight: 700; color: #291108; margin-top: 8px;" id="mob-wait-desc">
       Đang chờ Giáo viên mở câu hỏi tiếp theo trên máy chiếu...
@@ -1557,7 +1588,9 @@
         { key: "D", text: "Nhiệt kế" }
       ],
       correctKey: "B",
-      explanation: "Giải thích: Cân điện tử dùng để xác định khối lượng (m) của viên hạt một cách nhanh chóng và có độ chính xác cao."
+      explanation: "Giải thích: Cân điện tử dùng để xác định khối lượng (m) của viên hạt một cách nhanh chóng và có độ chính xác cao.",
+      toolName: "1. Cân điện tử",
+      toolDesc: "Xác định chính xác khối lượng (m)"
     },
     {
       id: 1,
@@ -1571,7 +1604,9 @@
         { key: "D", text: "Đồng hồ bấm giây" }
       ],
       correctKey: "A",
-      explanation: "Giải thích: Với vật rắn không thấm nước, chìm trong nước và có hình dạng bất kì, ta dùng ống đong và nước để đo thể tích phần nước dâng lên."
+      explanation: "Giải thích: Với vật rắn không thấm nước, chìm trong nước và có hình dạng bất kì, ta dùng ống đong và nước để đo thể tích phần nước dâng lên.",
+      toolName: "2. Ống đong",
+      toolDesc: "Đo thể tích chất lỏng mL (cm³)"
     },
     {
       id: 2,
@@ -1585,7 +1620,9 @@
         { key: "D", text: "Làm nước dâng cao hơn" }
       ],
       correctKey: "C",
-      explanation: "Giải thích: Sợi chỉ mảnh giúp buộc và thả viên hạt từ từ vào ống đong chứa nước, tránh bắn nước ra ngoài hay làm vỡ đáy ống đong."
+      explanation: "Giải thích: Sợi chỉ mảnh giúp buộc và thả viên hạt từ từ vào ống đong chứa nước, tránh bắn nước ra ngoài hay làm vỡ đáy ống đong.",
+      toolName: "3. Nước",
+      toolDesc: "Dùng trong phương pháp bình chia độ"
     },
     {
       id: 3,
@@ -1599,7 +1636,9 @@
         { key: "D", text: "12 cm³" }
       ],
       correctKey: "D",
-      explanation: "Giải thích: Thể tích viên hạt bằng thể tích nước dâng lên: V = 42 mL − 30 mL = 12 mL = 12 cm³."
+      explanation: "Giải thích: Thể tích viên hạt bằng thể tích nước dâng lên: V = 42 mL − 30 mL = 12 mL = 12 cm³.",
+      toolName: "4. Sợi chỉ mảnh",
+      toolDesc: "Buộc và hạ nhẹ nhàng viên hạt"
     }
   ];
 
@@ -1844,7 +1883,7 @@
     } else if (targetId === "screen-victory") {
       SoundFX.victory();
       startConfetti();
-      broadcastToPlayers({ type: "STATE_VICTORY", teams: gameState.teams });
+      broadcastToPlayers({ type: "STATE_VICTORY", teams: gameState.teams, unlockedCount: gameState.unlockedLocks.filter(Boolean).length });
     } else if (targetId === "screen-mission") {
       stopConfetti();
       renderFinalStandings();
@@ -2079,7 +2118,8 @@
       qIndex: qIndex,
       correctKey: qData.correctKey,
       explanation: qData.explanation,
-      teams: gameState.teams
+      teams: gameState.teams,
+      unlockedCount: gameState.unlockedLocks.filter(Boolean).length
     });
   }
 
@@ -2305,19 +2345,23 @@
       if (myTeam) {
         document.getElementById("mob-score-badge").textContent = `Điểm: ${myTeam.score}`;
       }
-      const isRight = gameState.mobileChosenAnswer === data.correctKey;
       
-      if (isRight) {
-        if (gameState.mobUnlockedCount < 4) {
-          const vItem = document.getElementById(`mob-v-${gameState.mobUnlockedCount}`);
-          if (vItem) {
-            vItem.classList.add("unlocked");
-            vItem.innerHTML = `🔓 Khóa ${gameState.mobUnlockedCount + 1}<br><span style="font-size:10px;">Đã mở thành công!</span>`;
-          }
-          gameState.mobUnlockedCount++;
+      const unlockedCount = data.unlockedCount || 0;
+      gameState.mobUnlockedCount = unlockedCount;
+
+      // Cập nhật lưới ổ khóa điện thoại
+      for (let i = 0; i < 4; i++) {
+        const vItem = document.getElementById(`mob-v-${i}`);
+        if (i < unlockedCount) {
+          vItem.classList.add("unlocked");
+          vItem.innerHTML = `🔓 Khóa ${i + 1}<br><span style="font-size:10px;">Đã mở</span>`;
+        } else {
+          vItem.classList.remove("unlocked");
+          vItem.innerHTML = `🔒 Ổ khóa ${i + 1}<br><span style="font-size:10px;">Chưa mở</span>`;
         }
       }
 
+      const isRight = gameState.mobileChosenAnswer === data.correctKey;
       document.getElementById("mob-res-icon").textContent = isRight ? "🎉" : "💡";
       document.getElementById("mob-res-title").textContent = isRight
         ? "CHÍNH XÁC! +10 ĐIỂM"
@@ -2336,7 +2380,30 @@
         document.getElementById("mob-score-badge").textContent = `Điểm: ${myTeam.score}`;
       }
       document.getElementById("mob-wait-title").textContent = "🎉 KHO DỤNG CỤ ĐÃ MỞ!";
-      document.getElementById("mob-wait-desc").textContent = "Chúc mừng đội của bạn! Hãy hướng lên máy chiếu để cùng tham gia thảo luận nhóm.";
+      document.getElementById("mob-wait-subtitle").textContent = "Chúc mừng! Các dụng cụ khoa học đã được mở khóa đầy đủ:";
+      
+      // Ẩn lưới ổ khóa, hiện danh sách dụng cụ tương ứng đúng với số câu
+      document.getElementById("mob-vault-container").style.display = "none";
+      const showcase = document.getElementById("mob-tools-showcase");
+      showcase.style.display = "flex";
+      showcase.innerHTML = "";
+
+      const count = data.unlockedCount || 4;
+      for (let i = 0; i < count; i++) {
+        const tool = QUESTIONS_DATA[i];
+        const card = document.createElement("div");
+        card.className = "mob-tool-card";
+        card.innerHTML = `
+          <div class="mob-tool-thumb">⚖️</div>
+          <div>
+            <div style="font-size:16px; font-weight:900; color:#991b1b;">${tool.toolName}</div>
+            <div style="font-size:13px; font-weight:700; color:#451a03;">${tool.toolDesc}</div>
+          </div>
+        `;
+        showcase.appendChild(card);
+      }
+
+      document.getElementById("mob-wait-desc").textContent = "Hãy hướng lên máy chiếu để cùng tham gia thảo luận nhóm với giáo viên.";
       showMobileStep("mob-step-wait");
     }
   }
